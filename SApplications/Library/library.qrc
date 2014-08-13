@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/library">
+        <file>pics/icon.png</file>
+        <file>pics/pic.png</file>
+        <file>pics/Image-Burner.png</file>
+    </qresource>
+</RCC>

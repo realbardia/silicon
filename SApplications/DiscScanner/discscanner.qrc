@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/DiscScanner">
+        <file>pics/icon.png</file>
+        <file>pics/pic.png</file>
+    </qresource>
+</RCC>

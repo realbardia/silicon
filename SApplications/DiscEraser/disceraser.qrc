@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/DiscEraser">
+        <file>pics/icon.png</file>
+        <file>pics/pic.png</file>
+    </qresource>
+</RCC>

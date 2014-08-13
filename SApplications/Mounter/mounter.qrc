@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/mounter">
+        <file>files/mounted.png</file>
+        <file>files/pic.png</file>
+        <file>files/Image-Burner.png</file>
+        <file>files/library-icon.png</file>
+    </qresource>
+</RCC>

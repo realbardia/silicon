@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/ScriptRunner">
+	<file>icons/icon.png</file>
+	<file>icons/pic.png</file>
+    </qresource>
+</RCC>

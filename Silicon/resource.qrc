@@ -1,0 +1,21 @@
+<RCC>
+    <qresource prefix="/files">
+        <file>Pixs/Silicon.png</file>
+        <file>Pixs/QT.png</file>
+        <file>Pixs/silicon-64x64.png</file>
+        <file>Pixs/splash.png</file>
+        <file>Pixs/authors/bardia-av.jpg</file>
+        <file>Pixs/authors/bardia-icon.jpg</file>
+        <file>Pixs/icon.png</file>
+        <file>Pixs/image.png</file>
+    </qresource>
+    <qresource prefix="/cats">
+        <file>Pixs/cats/bluray.png</file>
+        <file>Pixs/cats/cd.png</file>
+        <file>Pixs/cats/dvd.png</file>
+        <file>Pixs/cats/image.png</file>
+        <file>Pixs/cats/photo.png</file>
+        <file>Pixs/cats/sound.png</file>
+        <file>Pixs/cats/video.png</file>
+    </qresource>
+</RCC>

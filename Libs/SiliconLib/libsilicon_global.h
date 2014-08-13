@@ -1,0 +1,12 @@
+#ifndef LIBSILICON_GLOBAL_H
+#define LIBSILICON_GLOBAL_H
+
+#include <QtCore/qglobal.h>
+
+#if defined(LIBSILICON_LIBRARY)
+#  define LIBSILICON_EXPORT Q_DECL_EXPORT
+#else
+#  define LIBSILICON_EXPORT Q_DECL_IMPORT
+#endif
+
+#endif // LIBSILICON_GLOBAL_H

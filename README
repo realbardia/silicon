@@ -1,0 +1,75 @@
+Silicon : Think Beyond the Borders
+
+Silicon is set of OpenSource tools to manage and organize your optical discs like CDs ,DVDs and Blu-rays.
+Silicon target is made optical discs managing easy.
+
+Changelogs on 1.8.1:
+    *Add Chinese translation
+    *Initialize signal and function on framework
+    *Add new Tagarg-Player Widget (plugin) to burn playlist via AudioDisc directly :)
+    *AudioDisc commands support ...
+    *Limoo Picture Viewer (QML)
+    *Disable old Photo-viewer, But its still exist in source codes.
+    *SingleInnerDialog Plugin (QML Version)
+    *Fix DataDisc commands problem on some commands ...
+    *Fix speed bug on AudioDisc ...
+
+
+New Features (1.8.0):
+    *Changes Applications Ui, Easy to use User Interface ...
+    *all of pages can switch between Windowed Pages and Tabbed pages.
+    *Burn AudioDiscs
+    *File Converter
+    *Many of features ported to plugin system, like cdrecord engine, mkisofs engine, dvd+rw+format engine and ... .
+    *RootMount engine and fuseiso, you choose that
+    *Script Runner.
+    *DataDisc using ImageBurner application to burn images.
+    *CopyDisc application using ImageBurner and DiscImaging to copy a disc (no onfly)
+    *AudioDisc application using Converter application to convert mp3 or ogg files to wav.
+    *Beautiful Dialog manager.
+    *Udisks, Hal and UDisks+Hal plugin to detect devices.
+    *Better support for Gnome3 and Ubuntu-Unity.
+    *Tagarg-Player replaced with Minitunes. TagargPlayer is Beta ...
+    *Support widgets for TagargPlayer.
+    *Lyric Downloader on Tagarg Player.
+    *Silicon DataBase now is under construction, But features appended to other applications.
+    *Applications now can send QVariantList commands instead of QStringList command.
+    *DiscDetails Application.
+    *DiscScanner and DataBase application that is under construction.
+    *Many Improvment on Developers Framework.
+    *DiscDetector system.
+    *Silicon Abstract Process system.
+    *Silicon Bus Controller system that control silicon processes.
+    *...
+    
+Features (1.7.0):
+    *Burn,Copy,Erase and ... Optical Discs
+    *Works on CDs,DVDs and BluRays
+    *Show all informations of your Optical Discs and Devices before start process
+    *User Friendly User Interface
+    *Use CDR-Tools
+    *HAL (Hardware Abstract Layer) Plugin to detect devices
+    *Support Applications
+    *Support Plugins (Partial at this time)
+    *Support Themes
+    *Process on Number of jobs in the same time
+    *Queuing Overlapping Processes (using SBusController)
+    *Mount/Unmount CD/DVD Images (.iso, .nrg, .bin, .mdf and .img files)
+    *CD/DVD Images Manager (Silicon Library)
+    *Easy to use , light and Powerfull
+    *Searching between applications
+    *use Qt4
+    *Simple and Small Photo Viewer
+    *Can Change Qt Graphics System to Raster ,Native or OpenGl
+    *Internal File Association System
+    *Single Application System
+    *Drag and Drop Support on the most applications
+    *Make powerfull Connection between applications
+    *And Also Make powerfull Connection between Silicon and Silicon applications
+    *Minitunes MusicPlayer (will change completely in the future)
+    *Show all of that Happend in the background
+    *Auto Compatible with your desktop
+    *Copy all or a part of the Optical Discs , you choose that
+    *GPL License V3
+
+Author: Bardia Daneshvar (bardia.daneshvar at gmail)

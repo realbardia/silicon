@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/plugins/HalUDisk">
+        <file>icon.png</file>
+    </qresource>
+</RCC>

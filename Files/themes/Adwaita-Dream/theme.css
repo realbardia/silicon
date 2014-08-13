@@ -1,0 +1,218 @@
+STabBar:item{
+  border-style:solid;
+  border-radius: 3px;
+}
+
+STabBar:item:hover{
+  border: 0px solid ;
+  border-bottom-color: $(HIGHLIGHT);
+  border-radius: 3px;
+}
+
+STabBar:item:pressed{
+  background-color: qlineargradient(x1: 0, y1: 0, x2:0, y2:1, stop:0 $(WINDOW)*0.95, stop:1 transparent);
+  border: 0px solid ;
+  border-bottom-color: $(HIGHLIGHT);
+  border-left-color: $(WINDOW)*0.9;
+  border-right-color: $(WINDOW)*0.9;
+  border-radius: 3px;
+}
+
+STabBar:item:checked{
+  background-color: qlineargradient(x1: 0, y1: 0, x2:0, y2:1, stop:0 $(WINDOW), stop:1 transparent);
+  border: 0px solid ;
+  border-left-color: $(WINDOW)*0.8;
+  border-right-color: $(WINDOW)*0.8;
+  border-radius: 3px;
+}
+
+
+
+STabBar:TabBar:Arrow:!hover{
+  border-style: solid;
+}
+
+STabBar:TabBar:Arrow:hover{
+  border: 1px solid $(HIGHLIGHT);
+  border-radius: 3px;
+}
+
+STabBar:TabBar:Arrow:pressed{
+  border-color: $(HIGHLIGHT);
+  border-style: inset;
+}
+
+STabBar:TabBar:Back{
+  background-color: qlineargradient(x1: 0, y1: 0, x2:0, y2:1, stop:0 $(WINDOW)*1.05, stop:1 transparent);
+}
+
+STabBar:TabBar:Back{
+  background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 $(WINDOW)*0.8, stop:1 transparent);
+}
+
+STabBar:TabBar:Frame{
+  border: 1px solid $(WINDOW)*0.7;
+  border-radius: 4px;
+}
+
+STabBar:Background{
+  
+}
+
+
+
+
+CatWidget:Category{
+  background-image: url($(:left-brok.png));
+  background-position: bottom left;
+  background-repeat: no-repeat;
+  alternate-background-color: transparent;
+  background-color: qradialgradient(cx:0, cy:0, radius: 1,fx:0.5, fy:0.5, stop:0 $(HIGHLIGHT), stop:1 $(HIGHLIGHT)/2);
+  border-style: solid;
+  show-decoration-selected: 1;
+  min-width:137px;
+  max-width:137px;
+}
+
+CatWidget:Category:item:hover{
+  background-color: qlineargradient(x1:0, y1: 0, x2:5, y2:0, stop:0 transparent, stop:1 #ffffff );
+  color: $(HIGHLIGHTED_TEXT);
+}
+
+CatWidget:Category:item:!hover {
+  color: $(HIGHLIGHTED_TEXT);
+}
+
+CatWidget:Category:item:selected {
+  background-image: url($(:selected.png));
+  background-color: qlineargradient(x1:0.1, y1: 0, x2:2, y2:0, stop:0 transparent, stop:1 #ffffff );
+  selection-color: $(HIGHLIGHTED_TEXT);
+  background-position: center right;
+  background-repeat: no-repeat;
+}
+
+CatWidget:Background{
+  background-color: #ffffff;
+}
+
+CatWidget:List{
+  background-image: solid;
+  border-style: solid;
+  color: #000000;
+  show-decoration-selected: 1;
+}
+
+
+
+
+CatWidget:SearchBar:button:!hover{
+  border: 1px solid #dedede;
+}
+
+CatWidget:SearchBar:button:hover{
+  border: 1px solid $(HIGHLIGHT);
+}
+
+CatWidget:SearchBar:button:pressed{
+  border-color: $(HIGHLIGHT);
+  border-right-color: #dedede;
+  border-style: inset;
+}
+
+CatWidget:SearchBar:widget:QLineEdit{
+  border: 1px solid #dedede;
+  border-left-color: solid;
+}
+
+
+
+
+CatWidget:ViewBar:button:!hover{
+  border: 1px solid #dedede;
+  border-right-color: solid;
+}
+
+CatWidget:ViewBar:button:hover{
+  border: 1px solid $(HIGHLIGHT);
+}
+
+CatWidget:ViewBar:button:pressed{
+  border-color: $(HIGHLIGHT);
+  border-right-color: solid;
+  border-style: inset;
+}
+
+CatWidget:ViewBar:widget:QPushButton{
+}
+
+CatWidget:ViewBar:widget:QFrame{
+  border: 1px solid #dedede;
+  border-right-color: solid;
+}
+
+SInfoWidget{
+  background-image: url($(:down.png));
+  background-position: bottom right;
+  background-repeat: no-repeat;
+  background-color: qradialgradient(cx:0.5, cy:0, radius: 1,fx:1, fy:0.5, stop:0 $(HIGHLIGHT), stop:1 $(HIGHLIGHT)/2);
+  color: $(HIGHLIGHTED_TEXT);
+}
+
+
+
+SContextButton:!hover{
+  border: 1px solid $(WINDOW)*0.9;
+  border-radius: 3px;
+}
+
+SContextButton:hover{
+  border: 1px solid $(HIGHLIGHT);
+  border-radius: 3px;
+}
+
+SContextButton:pressed{
+  border-color: $(HIGHLIGHT);
+  border-style: inset;
+}
+
+
+
+SMenuButton:!hover{
+  border: 1px solid $(WINDOW)*0.9;
+  border-radius: 3px;
+}
+
+SMenuButton:hover{
+  border: 1px solid $(HIGHLIGHT);
+  border-radius: 3px;
+}
+
+SMenuButton:pressed{
+  border-color: $(HIGHLIGHT);
+  border-style: inset;
+}
+
+SMenu:topLeft{
+  background-color: qlineargradient(x1: 2, y1: 3, x2:0, y2:0, stop:0 $(HIGHLIGHT), stop:1 transparent);
+}
+SMenu:top{
+  background-color: qlineargradient(x1: 0, y1: 2, x2:0, y2:0, stop:0 $(HIGHLIGHT), stop:1 transparent);
+}
+SMenu:topRight{
+  background-color: qlineargradient(x1:-1, y1: 3, x2:1, y2:0, stop:0 $(HIGHLIGHT), stop:1 transparent);
+}
+SMenu:left{
+  background-color: qlineargradient(x1: 2, y1: 0, x2:0, y2:0, stop:0 $(HIGHLIGHT), stop:1 transparent);
+}
+SMenu:right{
+  background-color: qlineargradient(x1:-1, y1: 0, x2:1, y2:0, stop:0 $(HIGHLIGHT), stop:1 transparent);
+}
+SMenu:bottomLeft{
+  background-color: qlineargradient(x1: 2, y1:-2, x2:0, y2:1, stop:0 $(HIGHLIGHT), stop:1 transparent);
+}
+SMenu:bottom{
+  background-color: qlineargradient(x1: 0, y1:-1, x2:0, y2:1, stop:0 $(HIGHLIGHT), stop:1 transparent);
+}
+SMenu:bottomRight{
+  background-color: qlineargradient(x1:-1, y1:-2, x2:1, y2:1, stop:0 $(HIGHLIGHT), stop:1 transparent);
+

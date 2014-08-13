@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/plugins/single_inner_dialog">
+        <file>icon.png</file>
+    </qresource>
+</RCC>

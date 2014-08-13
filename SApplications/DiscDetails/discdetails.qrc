@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/plugins/DiscDetails">
+        <file>Pics/icon.png</file>
+        <file>Pics/pic.png</file>
+    </qresource>
+</RCC>

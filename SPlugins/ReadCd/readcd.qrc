@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/plugins/readcd">
+        <file>icon.png</file>
+    </qresource>
+</RCC>

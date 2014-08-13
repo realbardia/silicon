@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/plugins/audio-cdrecord">
+        <file>icon.png</file>
+    </qresource>
+</RCC>

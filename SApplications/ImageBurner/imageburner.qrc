@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/ImageBurner">
+        <file>pics/icon.png</file>
+        <file>pics/pic.png</file>
+        <file>pics/disc-request.png</file>
+    </qresource>
+</RCC>

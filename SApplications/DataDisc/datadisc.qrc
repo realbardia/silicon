@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/DataDisc">
+        <file>icons/data-disc.png</file>
+        <file>icons/disc-request.png</file>
+        <file>icons/pic.png</file>
+    </qresource>
+</RCC>

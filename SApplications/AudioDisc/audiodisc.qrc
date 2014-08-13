@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/AudioDisc">
+        <file>icons/audio-disc.png</file>
+        <file>icons/pic.png</file>
+    </qresource>
+</RCC>
