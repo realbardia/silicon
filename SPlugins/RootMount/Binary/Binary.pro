@@ -3,12 +3,12 @@
 # -------------------------------------------------
 unix:!macx {
     TARGET = ../../../../build/bin/silicon_rootmount
-    LIBS += ../../../../build/lib/libSiliconLib.so
+    LIBS += ../../../../build/lib/libsilicon.so
 }
 
 macx {
     TARGET = ../../../../build/bin/silicon.app/Contents/lib/silicon/plugins/silicon_rootmount
-    LIBS += ../../../../build/bin/silicon.app/Contents/lib/libSiliconLib.dylib
+    LIBS += ../../../../build/bin/silicon.app/Contents/lib/libsilicon.dylib
 }
 win32{
     TARGET = ../../../../../build/lib/silicon/plugins/silicon_rootmount

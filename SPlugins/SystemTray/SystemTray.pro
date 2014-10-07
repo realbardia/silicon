@@ -3,11 +3,11 @@
 # -------------------------------------------------
 unix:!macx {
     TARGET = ../../../build/lib/silicon/plugins/SystemTray
-    LIBS += ../../../build/lib/libSiliconLib.so
+    LIBS += ../../../build/lib/libsilicon.so
 }
 macx {
     TARGET = ../../../build/bin/silicon.app/Contents/lib/silicon/plugins/SystemTray
-    LIBS += ../../../build/bin/silicon.app/Contents/lib/libSiliconLib.dylib
+    LIBS += ../../../build/bin/silicon.app/Contents/lib/libsilicon.dylib
 }
 win32{
     TARGET = ../../../../build/lib/silicon/plugins/SystemTray

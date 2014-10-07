@@ -3,12 +3,12 @@
 # -------------------------------------------------
 unix:!macx {
     TARGET = ../../../build/lib/silicon/apps/DataBase
-    LIBS += ../../../build/lib/libSiliconLib.so \
+    LIBS += ../../../build/lib/libsilicon.so \
         ../../../build/lib/libsdatabase.so
 }
 macx {
     TARGET = ../../../build/bin/silicon.app/Contents/lib/silicon/apps/DataBase
-    LIBS += ../../../build/bin/silicon.app/Contents/lib/libSiliconLib.dylib \
+    LIBS += ../../../build/bin/silicon.app/Contents/lib/libsilicon.dylib \
         ../../../build/bin/silicon.app/Contents/lib/libsdatabase.dylib
 }
 win32{

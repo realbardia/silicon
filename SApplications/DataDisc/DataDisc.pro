@@ -3,13 +3,13 @@
 # -------------------------------------------------
 unix:!macx {
     TARGET = ../../../build/lib/silicon/apps/datadisc
-    LIBS += ../../../build/lib/libSiliconLib.so \
+    LIBS += ../../../build/lib/libsilicon.so \
         ../../../build/lib/libsidi.so \
         ../../../build/lib/libsdatabase.so
 }
 macx {
     TARGET = ../../../build/bin/silicon.app/Contents/lib/silicon/apps/datadisc
-    LIBS += ../../../build/bin/silicon.app/Contents/lib/libSiliconLib.dylib \
+    LIBS += ../../../build/bin/silicon.app/Contents/lib/libsilicon.dylib \
         ../../../build/bin/silicon.app/Contents/lib/libsidi.dylib \
         ../../../build/bin/silicon.app/Contents/lib/libsdatabase.dylib
 }

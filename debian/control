@@ -1,0 +1,35 @@
+Source: silicon
+Section: text
+Priority: optional
+Maintainer: Sialan Labs <contact@sialan.org>
+Build-Depends:
+ debhelper (>= 8.0.0),
+ g++ (>= 4:4.7),
+ gcc (>= 4:4.7),
+ qtbase5-dev (>= 5.2.0),
+ libqt5sql5-sqlite (>= 5.2.0),
+ qtchooser,
+ libqt5dbus5 (>= 5.2.0),
+ libqt5test5 (>= 5.2.0),
+ qt5-qmake,
+ qt5-default
+Standards-Version: 3.9.5
+Homepage: http://labs.sialan.org
+Vcs-Git: git://git@github.com:sialan-labs/silicon.git
+Vcs-Browser: https://github.com/sialan-labs/silicon
+
+Package: silicon
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, wodim, genisoimage, fuseiso, mpg123, mpg321, growisofs, udisks, udisks2
+Description: Silicon cd and dvd tools
+ Silicon is set of OpenSource tools to manage and organize 
+ your optical discs like CDs ,DVDs and Blu-rays. 
+ Silicon target is made optical discs managing easy.
+
+Package: silicon-dev
+Architecture: all
+Depends: silicon (>= ${source:Version}), ${misc:Depends}
+Description: Silicon cd and dvd tools headers
+ Silicon is set of OpenSource tools to manage and organize 
+ your optical discs like CDs ,DVDs and Blu-rays. 
+ Silicon target is made optical discs managing easy.

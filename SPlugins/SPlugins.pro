@@ -6,7 +6,6 @@ SUBDIRS += SingleInnerDialog \
         MkDiscFs \
         MkIsoFs \
         Eraser \
-        SingleInnerDialogQML \
         mpg123 \
         SystemTray
 

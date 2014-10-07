@@ -2,10 +2,10 @@
 Categories=Qt;AudioVideo;Player;Video;DiscBurning;
 Comment[en_US]=
 Comment=
-Exec=/usr/bin/silicon %U
+Exec=silicon %U
 GenericName[en_US]=CD/DVD Tools
 GenericName=CD/DVD Tools
-Icon=/usr/share/pixmaps/silicon
+Icon=silicon
 MimeType=application/x-cue;application/x-cd-image;
 Name[en_US]=Silicon
 Name=Silicon

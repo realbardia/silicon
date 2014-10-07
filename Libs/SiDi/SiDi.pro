@@ -5,14 +5,14 @@ unix:!macx {
     TARGET = ../../../build/lib/sidi
     INCLUDEPATH += /usr/include/taglib
     LIBS += ../../../build/lib/libsdatabase.so \
-        ../../../build/lib/libSiliconLib.so \
+        ../../../build/lib/libsilicon.so \
         -ltag
 }
 macx {
     TARGET = ../../../build/bin/silicon.app/Contents/lib/sidi
     INCLUDEPATH += /usr/include/taglib
     LIBS += ../../../build/bin/silicon.app/Contents/lib/libsdatabase.dylib \
-        ../../../build/bin/silicon.app/Contents/lib/libSiliconLib.dylib \
+        ../../../build/bin/silicon.app/Contents/lib/libsilicon.dylib \
         -ltag
 }
 win32 {
@@ -94,10 +94,14 @@ isEmpty(PREFIX) {
     PREFIX = /usr
 }
 
-contains(QMAKE_HOST.arch, x86_64):{
-    LIBS_PATH = lib/x86_64-linux-gnu/
+contains(BUILD_MODE,opt) {
+    LIBS_PATH = lib/
 } else {
-    LIBS_PATH = lib/i386-linux-gnu/
+    contains(QMAKE_HOST.arch, x86_64):{
+        LIBS_PATH = lib/x86_64-linux-gnu/
+    } else {
+        LIBS_PATH = lib/i386-linux-gnu/
+    }
 }
 
 target = $$TARGET

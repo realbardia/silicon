@@ -5,15 +5,15 @@
 #-------------------------------------------------
 
 unix:!macx {
-    TARGET = ../../../build/lib/SiliconLib
+    TARGET = ../../../build/lib/silicon
     LIBS += ../../../build/lib/libsdatabase.so
 }
 macx {
-    TARGET = ../../../build/bin/silicon.app/Contents/lib/siliconlib
+    TARGET = ../../../build/bin/silicon.app/Contents/lib/silicon
     LIBS += ../../../build/bin/silicon.app/Contents/lib/libsdatabase.dylib
 }
 win32 {
-    TARGET = ../../../../build/bin/libsiliconlib
+    TARGET = ../../../../build/bin/silicon
     LIBS += ../../../build/bin/sdatabase.dll
 
     SOURCES += QtWin/qtwin.cpp
@@ -160,10 +160,14 @@ isEmpty(PREFIX) {
     PREFIX = /usr
 }
 
-contains(QMAKE_HOST.arch, x86_64):{
-    LIBS_PATH = lib/x86_64-linux-gnu/
+contains(BUILD_MODE,opt) {
+    LIBS_PATH = lib/
 } else {
-    LIBS_PATH = lib/i386-linux-gnu/
+    contains(QMAKE_HOST.arch, x86_64):{
+        LIBS_PATH = lib/x86_64-linux-gnu/
+    } else {
+        LIBS_PATH = lib/i386-linux-gnu/
+    }
 }
 
 target = $$TARGET

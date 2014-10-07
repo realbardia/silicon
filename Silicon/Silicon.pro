@@ -3,13 +3,13 @@
 # -------------------------------------------------
 unix:!macx {
     TARGET = ../../build/bin/silicon
-    LIBS += ../../build/lib/libSiliconLib.so \
+    LIBS += ../../build/lib/libsilicon.so \
         ../../build/lib/libsidi.so \
         ../../build/lib/libsdatabase.so
 }
 macx {
     TARGET = ../../build/bin/silicon
-    LIBS += ../../build/bin/silicon.app/Contents/lib/libSiliconLib.dylib \
+    LIBS += ../../build/bin/silicon.app/Contents/lib/libsilicon.dylib \
         ../../build/bin/silicon.app/Contents/lib/libsidi.dylib \
         ../../build/bin/silicon.app/Contents/lib/libsdatabase.dylib
 }
@@ -103,15 +103,31 @@ qtcAddDeployment()
 
 isEmpty(PREFIX) {
     PREFIX = /usr
+    APPDESK_PATH = /usr/
+}
+
+contains(BUILD_MODE,opt) {
+    APPDESK_PATH = /usr/
+} else {
+    APPDESK_PATH = $$PREFIX/
 }
 
 target = $$TARGET
 target.path = $$PREFIX/bin
 icons.files = files/icons/
 icons.path = $$PREFIX/share/silicon
+pixmap.files = files/icons/silicon.png
+pixmap.path = $$APPDESK_PATH/share/pixmaps
 themes.files = files/themes/
 themes.path = $$PREFIX/share/silicon
 translations.files = ../../build/share/silicon/languages
 translations.path = $$PREFIX/share/silicon
+desktopFile.files = files/Silicon.desktop
+desktopFile.path = $$APPDESK_PATH/share/applications
 
-INSTALLS = target icons themes translations
+INSTALLS = target icons pixmap themes translations desktopFile runFile
+
+contains(BUILD_MODE,opt) {
+    runFile.files = run
+    runFile.path = $$PREFIX
+}

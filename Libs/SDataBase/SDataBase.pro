@@ -61,10 +61,14 @@ isEmpty(PREFIX) {
     PREFIX = /usr
 }
 
-contains(QMAKE_HOST.arch, x86_64):{
-    LIBS_PATH = lib/x86_64-linux-gnu/
+contains(BUILD_MODE,opt) {
+    LIBS_PATH = lib/
 } else {
-    LIBS_PATH = lib/i386-linux-gnu/
+    contains(QMAKE_HOST.arch, x86_64):{
+        LIBS_PATH = lib/x86_64-linux-gnu/
+    } else {
+        LIBS_PATH = lib/i386-linux-gnu/
+    }
 }
 
 target = $$TARGET
