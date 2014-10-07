@@ -30,13 +30,13 @@
 
 #include "libsilicon_global.h"
 
-class siliTabPrivate;
+class SiliTabPrivate;
 
 /*! \class
  * The siliTab class provides an tabbar class.
  * It's without stacked widget.
  */
-class LIBSILICON_EXPORT siliTab : public QWidget
+class LIBSILICON_EXPORT SiliTab : public QWidget
 {
 
 /*! List of All Available Functions :
@@ -106,14 +106,14 @@ class LIBSILICON_EXPORT siliTab : public QWidget
  */
 
     Q_OBJECT
-    Q_DISABLE_COPY( siliTab )
+    Q_DISABLE_COPY( SiliTab )
 
 public:
     /*!
      * Constructs a tabbar with "*parent" parent.
      */
-    siliTab( QWidget *parent = 0 );
-    ~siliTab();
+    SiliTab( QWidget *parent = 0 );
+    ~SiliTab();
 
 
     /*!
@@ -358,7 +358,7 @@ private slots:
     void close_request( STabItem *item );
 
 private:
-    siliTabPrivate *p;
+    SiliTabPrivate *p;
 };
 
 #endif // SILITAB_H

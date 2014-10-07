@@ -146,7 +146,7 @@ void Previewer::resizeEvent( QResizeEvent * )
  |                                |
  *================================*/
 
-class siliTabPrivate
+class SiliTabPrivate
 {
 public:
     QHBoxLayout *layout;
@@ -178,9 +178,9 @@ public:
  |                                |
  *================================*/
 
-siliTab::siliTab( QWidget *parent ) : QWidget( parent )
+SiliTab::SiliTab( QWidget *parent ) : QWidget( parent )
 {
-    p = new siliTabPrivate;
+    p = new SiliTabPrivate;
 
     p->preview = 0;
     p->previewer_delay = 1357;
@@ -196,7 +196,7 @@ siliTab::siliTab( QWidget *parent ) : QWidget( parent )
         p->baseLayout->addLayout( p->layout );
         p->baseLayout->addSpacerItem( new QSpacerItem( 4 ,  2 ,  QSizePolicy::Expanding ,  QSizePolicy::Minimum ) );
 
-    p->default_items_size = QSize( 137 , 26 );
+    p->default_items_size = QSize( 137 , 30 );
     p->animation = 0;
     p->current_item = 0;
 
@@ -206,22 +206,22 @@ siliTab::siliTab( QWidget *parent ) : QWidget( parent )
     setAnimation( true );
 }
 
-STabItem *siliTab::addTab( const QString & name )
+STabItem *SiliTab::addTab( const QString & name )
 {
     return addTab( QIcon() , name );
 }
 
-STabItem *siliTab::addTab( const QIcon & icon , const QString & name )
+STabItem *SiliTab::addTab( const QIcon & icon , const QString & name )
 {
     return insertTab( p->list.count() , icon , name );
 }
 
-STabItem *siliTab::insertTab( int index , const QString & name )
+STabItem *SiliTab::insertTab( int index , const QString & name )
 {
     return insertTab( index , QIcon() , name );
 }
 
-STabItem *siliTab::insertTab( int index , const QIcon & icon , const QString & name )
+STabItem *SiliTab::insertTab( int index , const QIcon & icon , const QString & name )
 {
     if( isAnimated() && p->animation->isActive() )
         p->animation->finish();
@@ -251,7 +251,7 @@ STabItem *siliTab::insertTab( int index , const QIcon & icon , const QString & n
     return item;
 }
 
-bool siliTab::removeTab( int index )
+bool SiliTab::removeTab( int index )
 {
     if( isAnimated() && p->animation->isActive() )
         p->animation->finish();
@@ -290,7 +290,7 @@ bool siliTab::removeTab( int index )
     return true;
 }
 
-void siliTab::moveTab( int from , int to )
+void SiliTab::moveTab( int from , int to )
 {
     STabItem *item = p->list.at( from );
 
@@ -303,22 +303,22 @@ void siliTab::moveTab( int from , int to )
 
 
 
-QIcon siliTab::tabIcon( int index ) const
+QIcon SiliTab::tabIcon( int index ) const
 {
     return p->list.at( index )->icon();
 }
 
-QString siliTab::tabText( int index ) const
+QString SiliTab::tabText( int index ) const
 {
     return p->list.at( index )->text();
 }
 
-STabItem *siliTab::item( int index ) const
+STabItem *SiliTab::item( int index ) const
 {
     return p->list.at( index );
 }
 
-int siliTab::index( STabItem *button ) const
+int SiliTab::index( STabItem *button ) const
 {
     int index = p->list.indexOf( button );
     if( p->at_spec_removing && index > this->currentIndex() )
@@ -327,49 +327,49 @@ int siliTab::index( STabItem *button ) const
     return index;
 }
 
-QString siliTab::styleSheet() const
+QString SiliTab::styleSheet() const
 {
     return p->style;
 }
 
-QSize siliTab::itemsSize() const
+QSize SiliTab::itemsSize() const
 {
     return p->default_items_size;
 }
 
-int siliTab::itemsWidth() const
+int SiliTab::itemsWidth() const
 {
     return p->default_items_size.width();
 }
 
-int siliTab::itemsHeight() const
+int SiliTab::itemsHeight() const
 {
     return p->default_items_size.height();
 }
 
-int siliTab::currentIndex() const
+int SiliTab::currentIndex() const
 {
     return p->list.indexOf( p->current_item ) - 1*p->at_spec_removing;
 }
 
 
 
-int siliTab::count() const
+int SiliTab::count() const
 {
     return p->list.count() - 1*p->at_spec_removing;
 }
 
-void siliTab::setTabText( int index , const QString & text )
+void SiliTab::setTabText( int index , const QString & text )
 {
     p->list.at( index )->setText( text );
 }
 
-void siliTab::setTabIcon( int index , const QIcon & icon )
+void SiliTab::setTabIcon( int index , const QIcon & icon )
 {
     p->list.at( index )->setIcon( icon );
 }
 
-void siliTab::setStyleSheet( const QString & styleSheet )
+void SiliTab::setStyleSheet( const QString & styleSheet )
 {
     p->style = styleSheet;
     SStyleSheet stl;
@@ -382,7 +382,7 @@ void siliTab::setStyleSheet( const QString & styleSheet )
         p->list.at( i )->setStyleSheet( p->defaultStyle );
 }
 
-void siliTab::setItemsSize( const QSize & size )
+void SiliTab::setItemsSize( const QSize & size )
 {
     p->default_items_size = size;
     for( int i=0;i<p->list.count();i++ )
@@ -391,7 +391,7 @@ void siliTab::setItemsSize( const QSize & size )
     }
 }
 
-void siliTab::setItemsWidth( int width )
+void SiliTab::setItemsWidth( int width )
 {
     p->default_items_size.setWidth( width );
     for( int i=0;i<p->list.count();i++ )
@@ -400,7 +400,7 @@ void siliTab::setItemsWidth( int width )
     }
 }
 
-void siliTab::setItemHeight( int height )
+void SiliTab::setItemHeight( int height )
 {
     p->default_items_size.setHeight( height );
     for( int i=0;i<p->list.count();i++ )
@@ -409,7 +409,7 @@ void siliTab::setItemHeight( int height )
     }
 }
 
-void siliTab::setAnimation( bool stt )
+void SiliTab::setAnimation( bool stt )
 {
     if( stt && p->animation == 0 )
     {
@@ -423,17 +423,17 @@ void siliTab::setAnimation( bool stt )
     }
 }
 
-bool siliTab::isAnimated() const
+bool SiliTab::isAnimated() const
 {
     return p->animation != 0;
 }
 
-void siliTab::setCurrentIndex( int index )
+void SiliTab::setCurrentIndex( int index )
 {
     p->list.at(index)->click();
 }
 
-void siliTab::unselectAll( bool stt )
+void SiliTab::unselectAll( bool stt )
 {
     if( p->current_item == 0 )
         return ;
@@ -441,7 +441,7 @@ void siliTab::unselectAll( bool stt )
     p->current_item->setChecked( !stt );
 }
 
-void siliTab::setPreviewer( bool stt )
+void SiliTab::setPreviewer( bool stt )
 {
     if( !stt && p->preview )
     {
@@ -458,22 +458,22 @@ void siliTab::setPreviewer( bool stt )
     }
 }
 
-bool siliTab::previewer() const
+bool SiliTab::previewer() const
 {
     return p->preview;
 }
 
-void siliTab::setPreviewerDelay( int ms )
+void SiliTab::setPreviewerDelay( int ms )
 {
     p->previewer_delay = ms;
 }
 
-int siliTab::previewerDelay() const
+int SiliTab::previewerDelay() const
 {
     return p->previewer_delay;
 }
 
-void siliTab::pointTabToWidget( int index , QWidget *widget )
+void SiliTab::pointTabToWidget( int index , QWidget *widget )
 {
     STabItem *item = p->list.at(index);
     if( widget )
@@ -482,12 +482,12 @@ void siliTab::pointTabToWidget( int index , QWidget *widget )
         p->hash.remove( item );
 }
 
-QWidget *siliTab::pointedWidgetToTab( int index ) const
+QWidget *SiliTab::pointedWidgetToTab( int index ) const
 {
     return p->hash.value( p->list.at(index) );
 }
 
-void siliTab::anim_finished( QWidget *widget )
+void SiliTab::anim_finished( QWidget *widget )
 {
     STabItem *item = static_cast<STabItem *>(widget);
     bool removed = item->size() == QSize(0,0);
@@ -513,7 +513,7 @@ void siliTab::anim_finished( QWidget *widget )
     }
 }
 
-void siliTab::clicked_on_item( STabItem *item )
+void SiliTab::clicked_on_item( STabItem *item )
 {
     killTimer( p->previewer_timer );
     p->previewer_timer = 0;
@@ -536,7 +536,7 @@ void siliTab::clicked_on_item( STabItem *item )
     emit this->indexChange( p->list.indexOf(item) - 1*p->at_spec_removing );
 }
 
-void siliTab::on_item( STabItem *item )
+void SiliTab::on_item( STabItem *item )
 {
     if( !previewer() || item->isChecked() )
         return;
@@ -552,7 +552,7 @@ void siliTab::on_item( STabItem *item )
     p->previewer_timer = startTimer( p->previewer_delay );
 }
 
-void siliTab::close_on_item( STabItem *item )
+void SiliTab::close_on_item( STabItem *item )
 {
     if( !previewer() )
         return;
@@ -567,12 +567,12 @@ void siliTab::close_on_item( STabItem *item )
     p->preview->hide();
 }
 
-void siliTab::close_request( STabItem *item )
+void SiliTab::close_request( STabItem *item )
 {
     emit this->closeRequest( p->list.indexOf(item) );
 }
 
-void siliTab::timerEvent( QTimerEvent * )
+void SiliTab::timerEvent( QTimerEvent * )
 {
     killTimer( p->previewer_timer );
     p->previewer_timer = 0;
@@ -580,7 +580,7 @@ void siliTab::timerEvent( QTimerEvent * )
     p->preview->show();
 }
 
-siliTab::~siliTab()
+SiliTab::~SiliTab()
 {
     delete p;
 }

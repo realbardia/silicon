@@ -2,16 +2,16 @@
 # Project created by QtCreator 2009-12-09T22:02:26
 # -------------------------------------------------
 unix:!macx {
-    TARGET = ../../../build-linux/lib/silicon/plugins/SingleInnerDialog
-    LIBS += ../../../build-linux/lib/libSiliconLib.so
+    TARGET = ../../../build/lib/silicon/plugins/SingleInnerDialog
+    LIBS += ../../../build/lib/libSiliconLib.so
 }
 macx {
-    TARGET = ../../../build-osx/bin/silicon.app/Contents/lib/silicon/plugins/SingleInnerDialog
-    LIBS += ../../../build-osx/bin/silicon.app/Contents/lib/libSiliconLib.dylib
+    TARGET = ../../../build/bin/silicon.app/Contents/lib/silicon/plugins/SingleInnerDialog
+    LIBS += ../../../build/bin/silicon.app/Contents/lib/libSiliconLib.dylib
 }
 win32{
-    TARGET = ../../../../build-windows/lib/silicon/plugins/SingleInnerDialog
-    LIBS += ../../../build-windows/bin/libsiliconlib.dll
+    TARGET = ../../../../build/lib/silicon/plugins/SingleInnerDialog
+    LIBS += ../../../build/bin/libsiliconlib.dll
 }
 
 QT += widgets
@@ -27,3 +27,12 @@ HEADERS += \
     dmanager.h \
     dialogwidget.h
 RESOURCES += singleinnerdialog.qrc
+
+isEmpty(PREFIX) {
+    PREFIX = /usr
+}
+
+target = $$TARGET
+target.path = $$PREFIX/lib/silicon/plugins/
+
+INSTALLS += target

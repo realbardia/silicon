@@ -41,7 +41,7 @@ AppInfoWidget::AppInfoWidget(QWidget *parent) :
         top_panel_widget->addAction( authors_action );
         top_panel_widget->addAction( contact_action );
         top_panel_widget->addAction( license_action );
-        top_panel_widget->addAction( translate_action );
+//        top_panel_widget->addAction( translate_action );
         top_panel_widget->setToolButtonStyle( Qt::ToolButtonTextUnderIcon );
         top_panel_widget->setIconSize( QSize(32,32) );
         top_panel_widget->setStyleSheet("QToolBar{border-style:solid}");

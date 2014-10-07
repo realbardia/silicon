@@ -30,12 +30,12 @@ extern "C" SAboutData about()           // Required Function <-----
     SAuthorInfo bardia;
         bardia.setFirstName( "Bardia" );
         bardia.setLastName( "Daneshvar" );
-        bardia.setNickName( "Bardiax" );
+        bardia.setNickName( "realbardia" );
         bardia.setAuthorIcon( QIcon(":/files/Pixs/authors/bardia-icon.jpg") );
         bardia.setAvatarPixmap( QPixmap(":/files/Pixs/authors/bardia-av.jpg") );
         bardia.setBornDate( QDate( 1990 , 9 , 18 ) );
         bardia.setHomePage( "http://www.HyperRay.net" );
-        bardia.setBlog( "http://Bardiax.wordpress.com" );
+        bardia.setBlog( "http://realbardia.com" );
         bardia.setMail( "bardia.daneshvar@gmail.com" );
         bardia.setAIM( "bardiax" );
         bardia.setGTalkIM( "bardia.daneshvar" );
@@ -47,6 +47,8 @@ extern "C" SAboutData about()           // Required Function <-----
         bardia.setProjectsLists( QStringList() );
 
     about_obj.setName( "Library" );
+    about_obj.setOrganizer( "Sialan Labs" );
+    about_obj.setCopyRight( "Sialan Labs" );
     about_obj.setTranslatedName( QObject::tr("Library") );
     about_obj.setVersion( "1.0.0" );
     about_obj.setType( QList<SAboutData::Type>()<< SAboutData::Image );

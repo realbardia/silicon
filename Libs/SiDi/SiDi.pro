@@ -2,25 +2,25 @@
 # Project created by QtCreator 2010-02-09T15:18:01
 # -------------------------------------------------
 unix:!macx {
-    TARGET = ../../../build-linux/lib/sidi
+    TARGET = ../../../build/lib/sidi
     INCLUDEPATH += /usr/include/taglib
-    LIBS += ../../../build-linux/lib/libsdatabase.so \
-        ../../../build-linux/lib/libSiliconLib.so \
+    LIBS += ../../../build/lib/libsdatabase.so \
+        ../../../build/lib/libSiliconLib.so \
         -ltag
 }
 macx {
-    TARGET = ../../../build-osx/bin/silicon.app/Contents/lib/sidi
+    TARGET = ../../../build/bin/silicon.app/Contents/lib/sidi
     INCLUDEPATH += /usr/include/taglib
-    LIBS += ../../../build-osx/bin/silicon.app/Contents/lib/libsdatabase.dylib \
-        ../../../build-osx/bin/silicon.app/Contents/lib/libSiliconLib.dylib \
+    LIBS += ../../../build/bin/silicon.app/Contents/lib/libsdatabase.dylib \
+        ../../../build/bin/silicon.app/Contents/lib/libSiliconLib.dylib \
         -ltag
 }
 win32 {
-    TARGET = ../../../../build-windows/bin/sidi
+    TARGET = ../../../../build/bin/sidi
     INCLUDEPATH += ../../../include/taglib
-    LIBS += ../../../build-windows/bin/sdatabase.dll \
-        ../../../build-windows/bin/libsiliconlib.dll \
-        ../../../build-windows/bin/libtag.dll
+    LIBS += ../../../build/bin/sdatabase.dll \
+        ../../../build/bin/libsiliconlib.dll \
+        ../../../build/bin/libtag.dll
 
     INCLUDEPATH += ../../../include/taglib
 }
@@ -89,3 +89,20 @@ HEADERS += SiDi_global.h \
     sabstractconverterengine.h \
     sabstractimagemounter.h \
     sabstractaudioburner.h
+
+isEmpty(PREFIX) {
+    PREFIX = /usr
+}
+
+contains(QMAKE_HOST.arch, x86_64):{
+    LIBS_PATH = lib/x86_64-linux-gnu/
+} else {
+    LIBS_PATH = lib/i386-linux-gnu/
+}
+
+target = $$TARGET
+target.path = $$PREFIX/$$LIBS_PATH
+headers.files = $$HEADERS
+headers.path = $$PREFIX/include/silicon/sidi
+
+INSTALLS += target headers

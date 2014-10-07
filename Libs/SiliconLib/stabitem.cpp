@@ -24,6 +24,8 @@
 #include <QDragLeaveEvent>
 #include <QDragMoveEvent>
 #include <QDropEvent>
+#include <QResizeEvent>
+#include <QDebug>
 
 #include "stabitem.h"
 #include "smastericons.h"
@@ -173,4 +175,9 @@ void STabItem::leaveEvent( QEvent *event )
 {
     QPushButton::leaveEvent( event );
     emit leaved( this );
+}
+
+void STabItem::resizeEvent( QResizeEvent *event )
+{
+    QPushButton::resizeEvent(event);
 }

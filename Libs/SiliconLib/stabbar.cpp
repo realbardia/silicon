@@ -48,8 +48,8 @@ public:
     QString style;
 
     SScrollWidget *scrollWidget;
-    siliTab *Tab;
-    siliStacked *Page;
+    SiliTab *tab;
+    siliStacked *page;
 
     bool background_transparent_stt;
 };
@@ -66,19 +66,19 @@ STabBar::STabBar( QWidget *parent ) : QWidget( parent )
 {
     p = new STabBarPrivate;
 
-    p->Tab = new siliTab();
-    p->Page = new siliStacked();
+    p->tab = new SiliTab();
+    p->page = new siliStacked();
 
     p->background_transparent_stt = false;
 
     p->scrollWidget=new SScrollWidget();
         p->scrollWidget->setEnableVerticalArrow(false);
         p->scrollWidget->setMaximumHeight(32);
-        p->scrollWidget->setWidget( p->Tab );
+        p->scrollWidget->setWidget( p->tab );
 
     p->tabLayout=new QHBoxLayout();
         p->tabLayout->addWidget( p->scrollWidget );
-        p->tabLayout->setContentsMargins(1,1,1,1);
+        p->tabLayout->setContentsMargins(0,0,0,0);
         p->tabLayout->setSpacing(0);
 
     p->topFrame=new QFrame();
@@ -87,15 +87,15 @@ STabBar::STabBar( QWidget *parent ) : QWidget( parent )
 
     p->widgetLayout=new QVBoxLayout(this);
         p->widgetLayout->addWidget( p->topFrame  );
-        p->widgetLayout->addWidget( p->Page );
+        p->widgetLayout->addWidget( p->page );
         p->widgetLayout->setContentsMargins( 0 , 0 , 0 , 0 );
         p->widgetLayout->setSpacing(0);
 
-    QObject::connect( p->Tab, SIGNAL(indexChange(int)) , this , SLOT(tabChangedSlot(int))      );
-    QObject::connect( p->Tab, SIGNAL(indexChange(int)) , this , SIGNAL(tabChanged(int))        );
-    QObject::connect( p->Tab, SIGNAL(tabAdded(int))    , this , SIGNAL(tabAdded(int))          );
-    QObject::connect( p->Tab, SIGNAL(emptied())        , this , SIGNAL(emptied())              );
-    QObject::connect( p->Tab, SIGNAL(closeRequest(int)), this , SLOT(sendCloseTabRequest(int)) );
+    QObject::connect( p->tab, SIGNAL(indexChange(int)) , this , SLOT(tabChangedSlot(int))      );
+    QObject::connect( p->tab, SIGNAL(indexChange(int)) , this , SIGNAL(tabChanged(int))        );
+    QObject::connect( p->tab, SIGNAL(tabAdded(int))    , this , SIGNAL(tabAdded(int))          );
+    QObject::connect( p->tab, SIGNAL(emptied())        , this , SIGNAL(emptied())              );
+    QObject::connect( p->tab, SIGNAL(closeRequest(int)), this , SLOT(sendCloseTabRequest(int)) );
 }
 
 
@@ -106,12 +106,12 @@ bool STabBar::addTab(const QString & name)
 
 bool STabBar::addTab(const QIcon & icon,const QString & name)
 {
-    if( p->Tab->addTab(icon,name) )
+    if( p->tab->addTab(icon,name) )
     {
-        p->Page->addPage();
-            p->Page->setCurrentIndex( p->Tab->currentIndex() );
+        p->page->addPage();
+            p->page->setCurrentIndex( p->tab->currentIndex() );
 
-        p->Tab->pointTabToWidget( p->Tab->currentIndex() , p->Page->currentPage() );
+        p->tab->pointTabToWidget( p->tab->currentIndex() , p->page->currentPage() );
         return true;
     }
     else
@@ -125,12 +125,12 @@ bool STabBar::insertTab(int index,const QString & name)
 
 bool STabBar::insertTab(int index,const QIcon & icon,const QString & name)
 {
-    if( p->Tab->insertTab(index,icon,name) )
+    if( p->tab->insertTab(index,icon,name) )
     {
-        p->Page->insertPage(index);
-            p->Page->setCurrentIndex( p->Tab->currentIndex() );
+        p->page->insertPage(index);
+            p->page->setCurrentIndex( p->tab->currentIndex() );
 
-        p->Tab->pointTabToWidget( p->Tab->currentIndex() , p->Page->currentPage() );
+        p->tab->pointTabToWidget( p->tab->currentIndex() , p->page->currentPage() );
         return true;
     }
     else
@@ -139,9 +139,9 @@ bool STabBar::insertTab(int index,const QIcon & icon,const QString & name)
 
 bool STabBar::removeTab(int index)
 {
-    if( p->Tab->removeTab(index) )
+    if( p->tab->removeTab(index) )
     {
-        p->Page->removePage(index);
+        p->page->removePage(index);
         return true;
     }
     else
@@ -152,12 +152,12 @@ bool STabBar::removeTab(int index)
 
 QIcon STabBar::tabIcon(int index) const
 {
-    return p->Tab->tabIcon(index);
+    return p->tab->tabIcon(index);
 }
 
 QString STabBar::tabText(int index) const
 {
-    return p->Tab->tabText(index);
+    return p->tab->tabText(index);
 }
 
 QString STabBar::styleSheet() const
@@ -167,47 +167,47 @@ QString STabBar::styleSheet() const
 
 void STabBar::setStackedPalette( const QPalette & palette )
 {
-    p->Page->setPalette( palette );
+    p->page->setPalette( palette );
 }
 
 const QPalette & STabBar::stackedPalette() const
 {
-    return p->Page->palette();
+    return p->page->palette();
 }
 
 QSize STabBar::tabsSize() const
 {
-    return p->Tab->itemsSize();
+    return p->tab->itemsSize();
 }
 
 int STabBar::tabsWidth() const
 {
-    return p->Tab->itemsWidth();
+    return p->tab->itemsWidth();
 }
 
 int STabBar::tabsHeight() const
 {
-    return p->Tab->itemsHeight();
+    return p->tab->itemsHeight();
 }
 
 int STabBar::currentIndex() const
 {
-    return p->Tab->currentIndex();
+    return p->tab->currentIndex();
 }
 
 QWidget *STabBar::page(int index) const
 {
-    return p->Page->page(index);
+    return p->page->page(index);
 }
 
 STabItem *STabBar::tab(int index) const
 {
-    return p->Tab->item( index );
+    return p->tab->item( index );
 }
 
 int STabBar::count() const
 {
-    return p->Tab->count();
+    return p->tab->count();
 }
 
 
@@ -221,12 +221,12 @@ QWidget *STabBar::takeTabBar() const
 
 void STabBar::setTabText(int index,const QString & text)
 {
-    p->Tab->setTabText(index,text);
+    p->tab->setTabText(index,text);
 }
 
 void STabBar::setTabIcon(int index,const QIcon & icon)
 {
-    p->Tab->setTabIcon(index,icon);
+    p->tab->setTabIcon(index,icon);
 }
 
 void STabBar::setStyleSheet(const QString & styleSheet)
@@ -236,7 +236,7 @@ void STabBar::setStyleSheet(const QString & styleSheet)
         stl.addStyle("STabBar",styleSheet);
         stl.enter("STabBar");
 
-    p->Tab->setStyleSheet( stl.filter("item") );
+    p->tab->setStyleSheet( stl.filter("item") );
     p->scrollWidget->setStyleSheet( stl.filter("TabBar") );
 
     SStyleSheet tmpCss;
@@ -255,28 +255,28 @@ void STabBar::setTransparentBackground( bool stt )
 
 void STabBar::setItemsSize(const QSize & size)
 {
-    p->Tab->setItemsSize(size);
+    p->tab->setItemsSize(size);
 }
 
 void STabBar::setItemsWidth(int width)
 {
-    p->Tab->setItemsWidth(width);
+    p->tab->setItemsWidth(width);
 }
 
 void STabBar::setItemHeight(int height)
 {
-    p->Tab->setItemHeight(height);
+    p->tab->setItemHeight(height);
 }
 
 void STabBar::setCurrentIndex(int index)
 {
-    p->Tab->setCurrentIndex(index);
-    p->Page->setCurrentIndex(index);
+    p->tab->setCurrentIndex(index);
+    p->page->setCurrentIndex(index);
 }
 
 void STabBar::setAnimation(bool stt)
 {
-    p->Tab->setAnimation(stt);
+    p->tab->setAnimation(stt);
 }
 
 
@@ -293,7 +293,7 @@ void STabBar::addWidgetAfterTab(QWidget *widget)
 
 void STabBar::unselectAll( bool stt )
 {
-    p->Tab->unselectAll( stt );
+    p->tab->unselectAll( stt );
 }
 
 
@@ -307,7 +307,7 @@ void STabBar::newTab()
 
 void STabBar::closeTab()
 {
-    this->removeTab( p->Tab->currentIndex());
+    this->removeTab( p->tab->currentIndex());
 }
 
 void STabBar::tabChangedSlot( int index )
@@ -315,13 +315,13 @@ void STabBar::tabChangedSlot( int index )
     if( index == -1 )
         return ;
 
-    p->Page->setCurrentIndex( index );
+    p->page->setCurrentIndex( index );
 }
 
 void STabBar::sendCloseTabRequest(int index)
 {
     emit this->closeRequest( index );
-    emit this->closeRequest( p->Page->page(index) );
+    emit this->closeRequest( p->page->page(index) );
 }
 
 STabBar::~STabBar()

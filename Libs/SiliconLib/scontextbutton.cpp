@@ -21,6 +21,7 @@
 #include "scontextbutton.h"
 
 #include <QMoveEvent>
+#include <QDebug>
 
 class MyMenu : public QMenu
 {
@@ -36,15 +37,19 @@ MyMenu::MyMenu( QWidget *parent ) : QMenu( parent )
 
 void MyMenu::moveEvent( QMoveEvent *event )
 {
-    int parent_pad = 0;
-    int parent_pos = event->pos().x();
+    int parent_pad_x = 0;
+    int parent_pos_x = event->pos().x();
+    int parent_pad_y;
+    int parent_pos_y;
     if( parentWidget() != 0 )
     {
-        parent_pad = parentWidget()->width();
-        parent_pos = parentWidget()->mapToGlobal(QPoint()).x();
+        parent_pad_x = parentWidget()->width();
+        parent_pos_x = parentWidget()->mapToGlobal(QPoint(0,0)).x();
+        parent_pad_y = parentWidget()->height();
+        parent_pos_y = parentWidget()->mapToGlobal(QPoint(0,0)).y();
     }
 
-    move( parent_pos + parent_pad - width() , event->pos().y()-2 );
+    move( parent_pos_x + parent_pad_x - width() , parent_pos_y + parent_pad_y );
 }
 
 
@@ -59,7 +64,7 @@ void MyMenu::moveEvent( QMoveEvent *event )
 class SContextButtonPrivate
 {
 public:
-    QMenu *menu;
+    MyMenu *menu;
     QPalette org_palette;
     bool colorized_stt;
 };
@@ -78,7 +83,7 @@ SContextButton::SContextButton(QWidget *parent) : QPushButton( parent )
     p = new SContextButtonPrivate;
     p->org_palette = palette();
 
-    p->menu = new QMenu( this );
+    p->menu = new MyMenu( this );
         p->menu->setMinimumWidth( 253 );
         p->colorized_stt = false;
 

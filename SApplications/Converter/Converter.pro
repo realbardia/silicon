@@ -2,19 +2,19 @@
 # Project created by QtCreator 2009-12-09T22:02:26
 # -------------------------------------------------
 unix:!macx {
-    TARGET = ../../../build-linux/lib/silicon/apps/Converter
-    LIBS += ../../../build-linux/lib/libSiliconLib.so \
-        ../../../build-linux/lib/libsidi.so
+    TARGET = ../../../build/lib/silicon/apps/Converter
+    LIBS += ../../../build/lib/libSiliconLib.so \
+        ../../../build/lib/libsidi.so
 }
 macx {
-    TARGET = ../../../build-osx/bin/silicon.app/Contents/lib/silicon/apps/Converter
-    LIBS += ../../../build-osx/bin/silicon.app/Contents/lib/libSiliconLib.dylib \
-        ../../../build-osx/bin/silicon.app/Contents/lib/libsidi.dylib
+    TARGET = ../../../build/bin/silicon.app/Contents/lib/silicon/apps/Converter
+    LIBS += ../../../build/bin/silicon.app/Contents/lib/libSiliconLib.dylib \
+        ../../../build/bin/silicon.app/Contents/lib/libsidi.dylib
 }
 win32{
-    TARGET = ../../../../build-windows/lib/silicon/apps/Converter
-    LIBS += ../../../build-windows/bin/libsiliconlib.dll \
-        ../../../build-windows/bin/sidi.dll
+    TARGET = ../../../../build/lib/silicon/apps/Converter
+    LIBS += ../../../build/bin/libsiliconlib.dll \
+        ../../../build/bin/sidi.dll
 }
 QT += widgets
 INCLUDEPATH += ../../Libs/SiliconLib \
@@ -34,3 +34,12 @@ RESOURCES += converter.qrc
 FORMS += \
     options.ui \
     extrawidget.ui
+
+isEmpty(PREFIX) {
+    PREFIX = /usr
+}
+
+target = $$TARGET
+target.path = $$PREFIX/lib/silicon/apps/
+
+INSTALLS += target

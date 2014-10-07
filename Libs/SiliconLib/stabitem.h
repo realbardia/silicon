@@ -120,6 +120,7 @@ protected:
     void dropEvent( QDropEvent *event );
     void enterEvent( QEvent *event );
     void leaveEvent( QEvent *event );
+    void resizeEvent( QResizeEvent *event );
 
 private:
     /*!

@@ -30,6 +30,7 @@ public slots:
     void closeAt( int index );
 
     void aboutQt();
+    void aboutSialan();
     void showApplications();
     void showLoadedPlugins();
     void showConfigure();

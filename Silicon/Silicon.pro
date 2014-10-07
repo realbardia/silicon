@@ -2,26 +2,26 @@
 # Project created by QtCreator 2009-11-17T15:40:25
 # -------------------------------------------------
 unix:!macx {
-    TARGET = ../../build-linux/bin/silicon
-    LIBS += ../../build-linux/lib/libSiliconLib.so \
-        ../../build-linux/lib/libsidi.so \
-        ../../build-linux/lib/libsdatabase.so
+    TARGET = ../../build/bin/silicon
+    LIBS += ../../build/lib/libSiliconLib.so \
+        ../../build/lib/libsidi.so \
+        ../../build/lib/libsdatabase.so
 }
 macx {
-    TARGET = ../../build-osx/bin/silicon
-    LIBS += ../../build-osx/bin/silicon.app/Contents/lib/libSiliconLib.dylib \
-        ../../build-osx/bin/silicon.app/Contents/lib/libsidi.dylib \
-        ../../build-osx/bin/silicon.app/Contents/lib/libsdatabase.dylib
+    TARGET = ../../build/bin/silicon
+    LIBS += ../../build/bin/silicon.app/Contents/lib/libSiliconLib.dylib \
+        ../../build/bin/silicon.app/Contents/lib/libsidi.dylib \
+        ../../build/bin/silicon.app/Contents/lib/libsdatabase.dylib
 }
 win32 { 
-    TARGET = ../../../build-windows/bin/silicon
-    LIBS += ../../build-windows/bin/libsiliconlib.dll \
-        ../../build-windows/bin/sidi.dll \
-        ../../build-windows/bin/sdatabase.dll
+    TARGET = ../../../build/bin/silicon
+    LIBS += ../../build/bin/libsiliconlib.dll \
+        ../../build/bin/sidi.dll \
+        ../../build/bin/sdatabase.dll
 }
 
 include(qtsingleapplication/qtsingleapplication.pri)
-#include(locale/locale.pri)
+include(locale/locale.pri)
 
 QT += widgets
 TEMPLATE = app
@@ -92,3 +92,26 @@ FORMS += appearanceUI.ui \
     applicationmanager.ui
 
 RESOURCES += resource.qrc
+
+icons_files.source = files/icons/
+icons_files.target = ../../build/share/silicon
+themes_files.source = files/themes/
+themes_files.target = ../../build/share/silicon
+DEPLOYMENTFOLDERS += icons_files themes_files
+include(qmake/qtcAddDeployment.pri)
+qtcAddDeployment()
+
+isEmpty(PREFIX) {
+    PREFIX = /usr
+}
+
+target = $$TARGET
+target.path = $$PREFIX/bin
+icons.files = files/icons/
+icons.path = $$PREFIX/share/silicon
+themes.files = files/themes/
+themes.path = $$PREFIX/share/silicon
+translations.files = ../../build/share/silicon/languages
+translations.path = $$PREFIX/share/silicon
+
+INSTALLS = target icons themes translations

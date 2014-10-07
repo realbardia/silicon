@@ -5,16 +5,16 @@
 #-------------------------------------------------
 
 unix:!macx {
-    TARGET = ../../../build-linux/lib/SiliconLib
-    LIBS += ../../../build-linux/lib/libsdatabase.so
+    TARGET = ../../../build/lib/SiliconLib
+    LIBS += ../../../build/lib/libsdatabase.so
 }
 macx {
-    TARGET = ../../../build-osx/bin/silicon.app/Contents/lib/siliconlib
-    LIBS += ../../../build-osx/bin/silicon.app/Contents/lib/libsdatabase.dylib
+    TARGET = ../../../build/bin/silicon.app/Contents/lib/siliconlib
+    LIBS += ../../../build/bin/silicon.app/Contents/lib/libsdatabase.dylib
 }
 win32 {
-    TARGET = ../../../../build-windows/bin/libsiliconlib
-    LIBS += ../../../build-windows/bin/sdatabase.dll
+    TARGET = ../../../../build/bin/libsiliconlib
+    LIBS += ../../../build/bin/sdatabase.dll
 
     SOURCES += QtWin/qtwin.cpp
     HEADERS += QtWin/qtwin.h
@@ -155,3 +155,20 @@ SOURCES += svariableconverter.cpp \
     swidgetmanager.cpp \
     swidgetpreview.cpp \
     sdialogpointer.cpp
+
+isEmpty(PREFIX) {
+    PREFIX = /usr
+}
+
+contains(QMAKE_HOST.arch, x86_64):{
+    LIBS_PATH = lib/x86_64-linux-gnu/
+} else {
+    LIBS_PATH = lib/i386-linux-gnu/
+}
+
+target = $$TARGET
+target.path = $$PREFIX/$$LIBS_PATH
+headers.files = $$HEADERS
+headers.path = $$PREFIX/include/silicon/siliconlib
+
+INSTALLS += target headers

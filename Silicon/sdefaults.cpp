@@ -9,7 +9,7 @@ SDefaults::SDefaults()
         current.cdUp();
         current.cdUp();
 
-    Home_Path = QDir( QDir::homePath()+"/.config/silicon" ).path();
+    Home_Path = QDir( QDir::homePath()+"/.config/sialan/silicon" ).path();
     Share_Path = QDir( current.path() + "/share/silicon" ).path();
 
     Personal_Theme_Directory_Path = QDir( Home_Path+"/themes" ).path();
@@ -18,12 +18,7 @@ SDefaults::SDefaults()
     Share_Icons_Directory_Path = QDir( current.path() + "/share/icons" ).path();
     Default_Theme = QDir( "Dream" ).path();
 
-    if ( QDir( current.path() + "/lib32" ).exists() && sizeof(void*) == 4 )
-        Silicon_Libs_Directory = QDir( current.path() + "/lib32" ).path();
-    else if( QDir( current.path() + "/lib64" ).exists() && sizeof(void*) == 8 )
-        Silicon_Libs_Directory = QDir( current.path() + "/lib64" ).path();
-    else
-        Silicon_Libs_Directory = QDir( current.path() + "/lib" ).path();
+    Silicon_Libs_Directory = QDir( current.path() + "/lib" ).path();
 
     Silicon_Application_Directory = QDir( Silicon_Libs_Directory +"/silicon/apps" ).path();
     Silicon_Plugins_Directory = QDir( Silicon_Libs_Directory +"/silicon/plugins" ).path();

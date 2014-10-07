@@ -10,6 +10,7 @@
 #include <QMimeData>
 #include <QHash>
 #include <QSystemTrayIcon>
+#include <QDesktopServices>
 #include <QDebug>
 
 #include <SCatWidget>
@@ -86,6 +87,7 @@ public:
     QAction *applications_action;
     QAction *about_action;
     QAction *about_qt_action;
+    QAction *about_sialan_action;
     QAction *quit_action;
 
     SCatWidget     *cat_widget;
@@ -172,12 +174,12 @@ void SiliconUI::init_about_data()
     SAuthorInfo bardia;
         bardia.setFirstName( "Bardia" );
         bardia.setLastName( "Daneshvar" );
-        bardia.setNickName( "Bardiax" );
+        bardia.setNickName( "realbardia" );
         bardia.setAuthorIcon( QIcon(":/files/Pixs/authors/bardia-icon.jpg") );
         bardia.setAvatarPixmap( QPixmap(":/files/Pixs/authors/bardia-av.jpg") );
         bardia.setBornDate( QDate( 1990 , 9 , 18 ) );
         bardia.setHomePage( "http://getSilicon.org" );
-        bardia.setBlog( "http://Bardiax.wordpress.com" );
+        bardia.setBlog( "http://realbardia.com" );
         bardia.setMail( "bardia.daneshvar@gmail.com" );
         bardia.setAIM( "bardiax" );
         bardia.setGTalkIM( "bardia.daneshvar" );
@@ -240,17 +242,17 @@ void SiliconUI::init_about_data()
         p->silicon_about.setTranslatedName( tr("Silicon") );
         p->silicon_about.setIcon( QIcon(":/files/Pixs/icon.png") );
         p->silicon_about.setPixmap( QPixmap(":/files/Pixs/image.png") );
-        p->silicon_about.setOrganizer( "Silicon" );
-        p->silicon_about.setCopyRight( "Silicon" );
+        p->silicon_about.setOrganizer( "Sialan Labs" );
+        p->silicon_about.setCopyRight( "Sialan Labs" );
 #ifdef Q_OS_LINUX
-        p->silicon_about.setVersion( "2.0.0" );
+        p->silicon_about.setVersion( "2.1.0" );
 #else
         p->silicon_about.setVersion( "pre-alpha" );
 #endif
         p->silicon_about.setHomePage( "http://getSilicon.org" );
-        p->silicon_about.setMail( "info@getsilicon.org" );
+        p->silicon_about.setMail( "contact@sialan.org" );
         p->silicon_about.setDescription( "" );
-        p->silicon_about.setAbout( tr("Silicon is set of tools to manage and organize your optical discs like CDs ,DVDs and Blu-rays. "
+        p->silicon_about.setAbout( tr("Silicon is set of tools by Sialan Labs to manage and organize your optical discs like CDs ,DVDs and Blu-rays. "
                                 "Silicon target is made optical discs managing easy.") );
         p->silicon_about.setLicense( Silicon::GPLLicense() );
         p->silicon_about.addTranslator( leo_tr );
@@ -259,16 +261,16 @@ void SiliconUI::init_about_data()
         p->silicon_about.setAuthors( QList<SAuthorInfo>()<<bardia<<milad_kakoli );
         p->silicon_about.setDescription( QString() + "<center><b>" + tr("Think beyond The Borders") + "</b></center><br />"
                                   + " <b>" + tr("Description :") + "</b><br />"
-                                  + tr(" Silicon is set of tools to manage and organize your optical discs like CDs ,DVDs and Blu-rays.<br />"
+                                  + tr(" Silicon is set of tools by Sialan Labs to manage and organize your optical discs like CDs ,DVDs and Blu-rays.<br />"
                                     " Silicon target is made optical discs managing easy.<br /><br />")
 #ifdef Q_OS_LINUX
-                                  + " <b>" + tr("Version :") + "</b> 2.0.0 <br /><br />"
+                                  + " <b>" + tr("Version :") + "</b> 2.1.0 <br /><br />"
 #else
                                   + " <b>" + tr("Version :") + "</b> pre-alpha <br /><br />"
 #endif
                                   + " <b>" + tr("License :") + "</b> GPL V3 <br /><br />"
                                   + " <b>" + tr("Authors :") + "</b><br />"
-                                  + " -> Bardia Daneshvar");
+                                  + " -> Sialan Labs");
         p->silicon_about.setCommandMap( "This is Silicon command line options:\n\n"
                                         "file1 file2 ...\t\t\tLoad files via applications that set in the file association.\n\n"
                                         "-L   ApplicationName   arguments\tLoad ApplicationName application with \"arguments\" arguments.");
@@ -415,6 +417,7 @@ void SiliconUI::init_actions()
     p->plugins_action = new QAction(SMasterIcons::icon( QSize(48,48) , "preferences-plugin.png" ), tr("Loaded Plugins"), this);
 
     p->about_qt_action = new QAction(QIcon(":/files/Pixs/QT.png"), tr("About Qt"), this);
+    p->about_sialan_action = new QAction(SMasterIcons::icon( QSize(48,48) , "help-about.png" ), tr("About Sialan labs"), this);
     p->about_action = new QAction(SMasterIcons::icon( QSize(48,48) , "help-about.png" ), tr("About"), this);
 
     p->quit_action = new QAction(SMasterIcons::icon( QSize(48,48) , "application-exit.png" ), tr("Quit"), this);
@@ -435,6 +438,7 @@ void SiliconUI::init_actions()
         p->menu_panel->addAction( p->plugins_action );
         p->menu_panel->addSeparator();
         p->menu_panel->addAction( p->about_qt_action );
+        p->menu_panel->addAction( p->about_sialan_action );
         p->menu_panel->addAction( p->about_action );
         p->menu_panel->addSeparator();
         p->menu_panel->addAction( p->quit_action );
@@ -613,6 +617,7 @@ void SiliconUI::init_connections()
     connect( p->plugins_action      , SIGNAL(triggered()) , this , SLOT(showLoadedPlugins()) );
     connect( p->about_qt_action     , SIGNAL(triggered()) , this , SLOT(aboutQt())           );
     connect( p->about_action        , SIGNAL(triggered()) , this , SLOT(showAbout())         );
+    connect( p->about_sialan_action , SIGNAL(triggered()) , this , SLOT(aboutSialan())       );
     connect( p->quit_action         , SIGNAL(triggered()) , this , SLOT(close())             );
 
     connect( p->cat_widget , SIGNAL(itemDoubleClicked(QListWidgetItem*))  , this , SLOT(loadApp(QListWidgetItem*))           );
@@ -965,6 +970,11 @@ void SiliconUI::viewModeChanged( QString name )
 void SiliconUI::aboutQt()
 {
     QApplication::aboutQt();
+}
+
+void SiliconUI::aboutSialan()
+{
+    QDesktopServices::openUrl(QUrl("http://labs.sialan.org"));
 }
 
 void SiliconUI::showApplications()

@@ -2,13 +2,13 @@
 # Project created by QtCreator 2009-11-16T13:40:50
 # -------------------------------------------------
 unix:!macx {
-    TARGET = ../../../build-linux/lib/sdatabase
+    TARGET = ../../../build/lib/sdatabase
 }
 macx {
-    TARGET = ../../../build-osx/bin/silicon.app/Contents/lib/sdatabase
+    TARGET = ../../../build/bin/silicon.app/Contents/lib/sdatabase
 }
 win32 {
-    TARGET = ../../../../build-windows/bin/sdatabase
+    TARGET = ../../../../build/bin/sdatabase
 }
 
 unix {
@@ -56,3 +56,20 @@ HEADERS += sdatabase.h \
     sdbtable.h \
     ssql.h \
     stinyfileinfo.h
+
+isEmpty(PREFIX) {
+    PREFIX = /usr
+}
+
+contains(QMAKE_HOST.arch, x86_64):{
+    LIBS_PATH = lib/x86_64-linux-gnu/
+} else {
+    LIBS_PATH = lib/i386-linux-gnu/
+}
+
+target = $$TARGET
+target.path = $$PREFIX/$$LIBS_PATH
+headers.files = $$HEADERS
+headers.path = $$PREFIX/include/silicon/database
+
+INSTALLS += target headers
