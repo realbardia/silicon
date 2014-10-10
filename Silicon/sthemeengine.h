@@ -14,7 +14,7 @@
 class SThemeEngine
 {
 public:
-    SThemeEngine( perConf *conf );
+    SThemeEngine( PerConf *conf );
 
     void set(const QString & themeStr);
     QString translate(const QString & theme);
@@ -27,7 +27,7 @@ private:
     QWidget parent;
 
     SDefaults defaults;
-    perConf *prc;
+    PerConf *prc;
 };
 
 #endif // STHEMEENGINE_H

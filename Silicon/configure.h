@@ -26,7 +26,7 @@ class Configure : public QWidget
 {
     Q_OBJECT
 public:
-    Configure( perConf *conf , QWidget *parent = 0);
+    Configure( PerConf *conf , QWidget *parent = 0);
     ~Configure();
 
     void addItem(const QIcon & icon, const QString & name, QWidget *widget);
@@ -91,7 +91,7 @@ private:
     Ui::Appearance *appearUI;
 
     SDefaults defaults;
-    perConf *prc;
+    PerConf *prc;
 
     QPalette default_palette;
 

@@ -125,9 +125,10 @@ translations.path = $$PREFIX/share/silicon
 desktopFile.files = files/Silicon.desktop
 desktopFile.path = $$APPDESK_PATH/share/applications
 
-INSTALLS = target icons pixmap themes translations desktopFile runFile
+INSTALLS = target icons pixmap themes translations desktopFile
 
 contains(BUILD_MODE,opt) {
     runFile.files = run
     runFile.path = $$PREFIX
+    INSTALLS += runFile
 }

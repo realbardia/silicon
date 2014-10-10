@@ -18,7 +18,7 @@ class SiliconUI : public QMainWindow
 {
     Q_OBJECT
 public:
-    SiliconUI( perConf *prcnf , QWidget *parent = 0 );
+    SiliconUI( PerConf *prcnf , QWidget *parent = 0 );
     ~SiliconUI();
 
 public slots:

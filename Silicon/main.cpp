@@ -47,13 +47,13 @@ int main(int argc, char *argv[])
     }
 
     SDefaults defaults;
-    perConf prc( defaults.Personal_Configs_file );
+    PerConf prc( defaults.Personal_Configs_file );
 
 
     int ret_code;
     if( true /*args.contains("-s") || args.count() == 1*/ )
     {
-        QString color_str = prc.readOption( perConf::HIGHLIGHT );
+        QString color_str = prc.readOption( PerConf::HIGHLIGHT );
         QColor color = QPalette().color(QPalette::Highlight);
         if( !color_str.isEmpty() )
             color.setNamedColor( color_str );

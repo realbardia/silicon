@@ -1,6 +1,6 @@
 #include "sthemeengine.h"
 
-SThemeEngine::SThemeEngine( perConf *conf )
+SThemeEngine::SThemeEngine( PerConf *conf )
 {
     prc = conf;
 }
@@ -27,12 +27,12 @@ QString SThemeEngine::translate(const QString & theme)
             if( result[pointer] == ':' )
             {
                 replaceStr = defaults.Personal_Theme_Directory_Path + '/'
-                           + prc->readOption(perConf::CURRENT_THEME) + '/'
+                           + prc->readOption(PerConf::CURRENT_THEME) + '/'
                            + result.mid( pointer+1 , i-pointer-1 );
                 if(!QFile(replaceStr).exists())
                 {
                     replaceStr = defaults.Share_Theme_Directory_Path + '/'
-                               + prc->readOption(perConf::CURRENT_THEME) + '/'
+                               + prc->readOption(PerConf::CURRENT_THEME) + '/'
                                + result.mid( pointer+1 , i-pointer-1 );
                     if(!QFile(replaceStr).exists())
                     {

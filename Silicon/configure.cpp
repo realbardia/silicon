@@ -4,7 +4,7 @@
 #include <QMessageBox>
 #include <QStyleFactory>
 
-Configure::Configure( perConf *conf , QWidget *parent) : QWidget( parent )
+Configure::Configure( PerConf *conf , QWidget *parent) : QWidget( parent )
 {
     prc = conf;
 
@@ -86,7 +86,7 @@ void Configure::setupLanguages()
          QString lang = QLocale::languageToString(QLocale(locale).language());
          appearUI->languagecomboBox->addItem( lang, langPath + "/" + languages[i] );
 
-         if( lang.toLower() == prc->readOption(perConf::LANGUAGE) )
+         if( lang.toLower() == prc->readOption(PerConf::LANGUAGE) )
          {
              appearUI->languagecomboBox->setCurrentIndex( i );
              setLanguage( i );
@@ -118,7 +118,7 @@ void Configure::setLanguage( int id )
     translator->load(locale,"languages");
     QApplication::installTranslator(translator);
 
-    prc->setOption( perConf::LANGUAGE , appearUI->languagecomboBox->currentText().toLower() );
+    prc->setOption( PerConf::LANGUAGE , appearUI->languagecomboBox->currentText().toLower() );
     prc->save();
 }
 
@@ -138,17 +138,17 @@ void Configure::setupAppearance()
     appearUI->iconList->addItems( QDir(defaults.Personal_Icons_Directory_Path).entryList(QDir::Dirs | QDir::NoDotAndDotDot) );
     appearUI->iconList->addItems( QDir(defaults.Share_Icons_Directory_Path).entryList(QDir::Dirs | QDir::NoDotAndDotDot) );
 
-    appearUI->menuCheckBox->setChecked( stringToBoolian(prc->readOption(perConf::MENU_ANIMATION)) );
-    appearUI->searchBarCheckBox->setChecked( stringToBoolian(prc->readOption(perConf::SEARCHBAR_ANIMATION)) );
-    appearUI->searchingCheckBox->setChecked( stringToBoolian(prc->readOption(perConf::SEARCHING_ANIMATION)) );
-    appearUI->tabsCheckBox->setChecked( stringToBoolian(prc->readOption(perConf::TABBAR_ANIMATION)) );
-    appearUI->toolbarCheckBox->setChecked( stringToBoolian(prc->readOption(perConf::TOOLBAR_ANIMATION)) );
+    appearUI->menuCheckBox->setChecked( stringToBoolian(prc->readOption(PerConf::MENU_ANIMATION)) );
+    appearUI->searchBarCheckBox->setChecked( stringToBoolian(prc->readOption(PerConf::SEARCHBAR_ANIMATION)) );
+    appearUI->searchingCheckBox->setChecked( stringToBoolian(prc->readOption(PerConf::SEARCHING_ANIMATION)) );
+    appearUI->tabsCheckBox->setChecked( stringToBoolian(prc->readOption(PerConf::TABBAR_ANIMATION)) );
+    appearUI->toolbarCheckBox->setChecked( stringToBoolian(prc->readOption(PerConf::TOOLBAR_ANIMATION)) );
 
-    appearUI->gradiant_back_check->setChecked( stringToBoolian(prc->readOption(perConf::GRADIANT_BACK)) );
-    appearUI->colorized_menu_check->setChecked( stringToBoolian(prc->readOption(perConf::COLORIZED_MENU)) );
+    appearUI->gradiant_back_check->setChecked( stringToBoolian(prc->readOption(PerConf::GRADIANT_BACK)) );
+    appearUI->colorized_menu_check->setChecked( stringToBoolian(prc->readOption(PerConf::COLORIZED_MENU)) );
 
 
-    QString graphic_system = prc->readOption(perConf::GRAPHICS_SYSTEM);
+    QString graphic_system = prc->readOption(PerConf::GRAPHICS_SYSTEM);
     if( graphic_system == "raster" )
         appearUI->raster_check->setChecked( true );
     else if( graphic_system == "native" )
@@ -166,7 +166,7 @@ void Configure::setupStyle()
 
     appearUI->widget_style_combo->addItems( styles );
 
-    QString current_style_str = prc->readOption( perConf::WIDGET_STYLE );
+    QString current_style_str = prc->readOption( PerConf::WIDGET_STYLE );
     int     current_style_row = styles.indexOf( current_style_str );
 
     if( current_style_row < 0 )
@@ -180,39 +180,39 @@ void Configure::setupColors()
 {
     default_palette = QApplication::palette();
 
-    colors_hash.insert( perConf::WINDOW         , new SColorButton( tr("Window Color") )          );
-    colors_hash.insert( perConf::WINDOW_TEXT    , new SColorButton( tr("Window Text Color") )     );
-    colors_hash.insert( perConf::BASE           , new SColorButton( tr("Base Color") )            );
-    colors_hash.insert( perConf::BASE_TEXT      , new SColorButton( tr("Base Text Color") )       );
-    colors_hash.insert( perConf::BUTTON_TEXT    , new SColorButton( tr("Button Text Color") )     );
-    colors_hash.insert( perConf::BUTTON         , new SColorButton( tr("Button Color") )          );
-    colors_hash.insert( perConf::BRIGHT_TEXT    , new SColorButton( tr("Bright Text Color") )     );
-    colors_hash.insert( perConf::DARK           , new SColorButton( tr("Dark Color") )            );
-    colors_hash.insert( perConf::HIGHLIGHT      , new SColorButton( tr("Highlight Color") )       );
-    colors_hash.insert( perConf::HIGHLIGHT_TEXT , new SColorButton( tr("Highlight Text Color") )  );
-    colors_hash.insert( perConf::LIGHT          , new SColorButton( tr("Light Color") )           );
-    colors_hash.insert( perConf::LINK           , new SColorButton( tr("Link Color") )            );
-    colors_hash.insert( perConf::LINK_VISITED   , new SColorButton( tr("Link Visited Color") )    );
-    colors_hash.insert( perConf::MID            , new SColorButton( tr("Mid Color") )             );
-    colors_hash.insert( perConf::MIDLIGHT       , new SColorButton( tr("Midlight Color") )        );
-    colors_hash.insert( perConf::SHADOW         , new SColorButton( tr("Shadow Color") )          );
+    colors_hash.insert( PerConf::WINDOW         , new SColorButton( tr("Window Color") )          );
+    colors_hash.insert( PerConf::WINDOW_TEXT    , new SColorButton( tr("Window Text Color") )     );
+    colors_hash.insert( PerConf::BASE           , new SColorButton( tr("Base Color") )            );
+    colors_hash.insert( PerConf::BASE_TEXT      , new SColorButton( tr("Base Text Color") )       );
+    colors_hash.insert( PerConf::BUTTON_TEXT    , new SColorButton( tr("Button Text Color") )     );
+    colors_hash.insert( PerConf::BUTTON         , new SColorButton( tr("Button Color") )          );
+    colors_hash.insert( PerConf::BRIGHT_TEXT    , new SColorButton( tr("Bright Text Color") )     );
+    colors_hash.insert( PerConf::DARK           , new SColorButton( tr("Dark Color") )            );
+    colors_hash.insert( PerConf::HIGHLIGHT      , new SColorButton( tr("Highlight Color") )       );
+    colors_hash.insert( PerConf::HIGHLIGHT_TEXT , new SColorButton( tr("Highlight Text Color") )  );
+    colors_hash.insert( PerConf::LIGHT          , new SColorButton( tr("Light Color") )           );
+    colors_hash.insert( PerConf::LINK           , new SColorButton( tr("Link Color") )            );
+    colors_hash.insert( PerConf::LINK_VISITED   , new SColorButton( tr("Link Visited Color") )    );
+    colors_hash.insert( PerConf::MID            , new SColorButton( tr("Mid Color") )             );
+    colors_hash.insert( PerConf::MIDLIGHT       , new SColorButton( tr("Midlight Color") )        );
+    colors_hash.insert( PerConf::SHADOW         , new SColorButton( tr("Shadow Color") )          );
 
-    colors_role.insert( perConf::WINDOW         , QPalette::Window          );
-    colors_role.insert( perConf::WINDOW_TEXT    , QPalette::WindowText      );
-    colors_role.insert( perConf::BASE           , QPalette::Base            );
-    colors_role.insert( perConf::BASE_TEXT      , QPalette::Text            );
-    colors_role.insert( perConf::BUTTON_TEXT    , QPalette::ButtonText      );
-    colors_role.insert( perConf::BUTTON         , QPalette::Button          );
-    colors_role.insert( perConf::BRIGHT_TEXT    , QPalette::BrightText      );
-    colors_role.insert( perConf::DARK           , QPalette::Dark            );
-    colors_role.insert( perConf::HIGHLIGHT      , QPalette::Highlight       );
-    colors_role.insert( perConf::HIGHLIGHT_TEXT , QPalette::HighlightedText );
-    colors_role.insert( perConf::LIGHT          , QPalette::Light           );
-    colors_role.insert( perConf::LINK           , QPalette::Link            );
-    colors_role.insert( perConf::LINK_VISITED   , QPalette::LinkVisited     );
-    colors_role.insert( perConf::MID            , QPalette::Mid             );
-    colors_role.insert( perConf::MIDLIGHT       , QPalette::Midlight        );
-    colors_role.insert( perConf::SHADOW         , QPalette::Shadow          );
+    colors_role.insert( PerConf::WINDOW         , QPalette::Window          );
+    colors_role.insert( PerConf::WINDOW_TEXT    , QPalette::WindowText      );
+    colors_role.insert( PerConf::BASE           , QPalette::Base            );
+    colors_role.insert( PerConf::BASE_TEXT      , QPalette::Text            );
+    colors_role.insert( PerConf::BUTTON_TEXT    , QPalette::ButtonText      );
+    colors_role.insert( PerConf::BUTTON         , QPalette::Button          );
+    colors_role.insert( PerConf::BRIGHT_TEXT    , QPalette::BrightText      );
+    colors_role.insert( PerConf::DARK           , QPalette::Dark            );
+    colors_role.insert( PerConf::HIGHLIGHT      , QPalette::Highlight       );
+    colors_role.insert( PerConf::HIGHLIGHT_TEXT , QPalette::HighlightedText );
+    colors_role.insert( PerConf::LIGHT          , QPalette::Light           );
+    colors_role.insert( PerConf::LINK           , QPalette::Link            );
+    colors_role.insert( PerConf::LINK_VISITED   , QPalette::LinkVisited     );
+    colors_role.insert( PerConf::MID            , QPalette::Mid             );
+    colors_role.insert( PerConf::MIDLIGHT       , QPalette::Midlight        );
+    colors_role.insert( PerConf::SHADOW         , QPalette::Shadow          );
 
 
     SColorButton *tmp;
@@ -285,7 +285,7 @@ void Configure::widgetStyleChanged( const QString & str )
 
     QApplication::setStyle( style );
 
-    prc->setOption( perConf::WIDGET_STYLE , style );
+    prc->setOption( PerConf::WIDGET_STYLE , style );
     prc->save();
 }
 
@@ -306,14 +306,14 @@ void Configure::addItem(const QIcon & icon, const QString & name, QWidget *widge
 
 void Configure::setTheme(QListWidgetItem *item)
 {
-    prc->setOption( perConf::CURRENT_THEME , item->text() );
+    prc->setOption( PerConf::CURRENT_THEME , item->text() );
     prc->save();
     emit this->themeChanged();
 }
 
 void Configure::setMenuAnimation(bool stt)
 {
-    prc->setOption( perConf::MENU_ANIMATION , boolianToString(stt) );
+    prc->setOption( PerConf::MENU_ANIMATION , boolianToString(stt) );
     prc->save();
 
     emit this->graphicEffectsChanged();
@@ -321,7 +321,7 @@ void Configure::setMenuAnimation(bool stt)
 
 void Configure::setSearchBarAnimation(bool stt)
 {
-    prc->setOption( perConf::SEARCHBAR_ANIMATION , boolianToString(stt) );
+    prc->setOption( PerConf::SEARCHBAR_ANIMATION , boolianToString(stt) );
     prc->save();
 
     emit this->graphicEffectsChanged();
@@ -329,7 +329,7 @@ void Configure::setSearchBarAnimation(bool stt)
 
 void Configure::setSearchingAnimation(bool stt)
 {
-    prc->setOption( perConf::SEARCHING_ANIMATION , boolianToString(stt) );
+    prc->setOption( PerConf::SEARCHING_ANIMATION , boolianToString(stt) );
     prc->save();
 
     emit this->graphicEffectsChanged();
@@ -337,7 +337,7 @@ void Configure::setSearchingAnimation(bool stt)
 
 void Configure::setTabBarAnimation(bool stt)
 {
-    prc->setOption( perConf::TABBAR_ANIMATION , boolianToString(stt) );
+    prc->setOption( PerConf::TABBAR_ANIMATION , boolianToString(stt) );
     prc->save();
 
     emit this->graphicEffectsChanged();
@@ -345,7 +345,7 @@ void Configure::setTabBarAnimation(bool stt)
 
 void Configure::setToolBarAnimation(bool stt)
 {
-    prc->setOption( perConf::TOOLBAR_ANIMATION , boolianToString(stt) );
+    prc->setOption( PerConf::TOOLBAR_ANIMATION , boolianToString(stt) );
     prc->save();
 
     emit this->graphicEffectsChanged();
@@ -385,7 +385,7 @@ void Configure::setAuto( bool stt )
 
 void Configure::setGradiantBack( bool stt )
 {
-    prc->setOption( perConf::GRADIANT_BACK , boolianToString(stt) );
+    prc->setOption( PerConf::GRADIANT_BACK , boolianToString(stt) );
     prc->save();
 
     emit this->graphicEffectsChanged();
@@ -393,7 +393,7 @@ void Configure::setGradiantBack( bool stt )
 
 void Configure::setColorizedMenu( bool stt )
 {
-    prc->setOption( perConf::COLORIZED_MENU , boolianToString(stt) );
+    prc->setOption( PerConf::COLORIZED_MENU , boolianToString(stt) );
     prc->save();
 
     emit this->graphicEffectsChanged();
@@ -401,7 +401,7 @@ void Configure::setColorizedMenu( bool stt )
 
 void Configure::setGraphicSystem( const QString & str )
 {
-    prc->setOption( perConf::GRAPHICS_SYSTEM , str );
+    prc->setOption( PerConf::GRAPHICS_SYSTEM , str );
     prc->set( "Appearance","graphics_system" , str );
     prc->save();
 

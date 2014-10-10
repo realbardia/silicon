@@ -65,7 +65,7 @@ bool stringToBoolian( const QString & str )
 class SiliconUIPrivate
 {
 public:
-    perConf    *prc;
+    PerConf    *prc;
     QStringList favorites;
     SSql       *sql;
 
@@ -139,7 +139,7 @@ public:
 
 
 
-SiliconUI::SiliconUI( perConf *prcnf , QWidget *parent)
+SiliconUI::SiliconUI( PerConf *prcnf , QWidget *parent)
     : QMainWindow(parent)
 {
     p = new SiliconUIPrivate;
@@ -450,23 +450,23 @@ void SiliconUI::init_presonal_confs()
 {
     bool OK;
 
-    resize( p->prc->readOption( perConf::WIDTH ).toInt(&OK) , p->prc->readOption( perConf::HEIGHT ).toInt(&OK) );
-    p->cat_widget->setView( p->prc->readOption(perConf::VIEW_MODE) );
+    resize( p->prc->readOption( PerConf::WIDTH ).toInt(&OK) , p->prc->readOption( PerConf::HEIGHT ).toInt(&OK) );
+    p->cat_widget->setView( p->prc->readOption(PerConf::VIEW_MODE) );
 
-    p->favorites = p->prc->readOption(perConf::FAVORITES).split(",",QString::SkipEmptyParts);   // Moved To DetectApps Function
+    p->favorites = p->prc->readOption(PerConf::FAVORITES).split(",",QString::SkipEmptyParts);   // Moved To DetectApps Function
 }
 
 void SiliconUI::init_graphic_effects()
 {
-    p->menu->setAnimation(                stringToBoolian( p->prc->readOption(perConf::MENU_ANIMATION      )) );
-    p->cat_widget->setSearchBarAnimation( stringToBoolian( p->prc->readOption(perConf::SEARCHBAR_ANIMATION )) );
-    p->cat_widget->setAnimation(          stringToBoolian( p->prc->readOption(perConf::SEARCHING_ANIMATION )) );
-    p->tab_bar->setAnimation(             stringToBoolian( p->prc->readOption(perConf::TABBAR_ANIMATION    )) );
-    p->toolbar_manager->setAnimation(     stringToBoolian( p->prc->readOption(perConf::TOOLBAR_ANIMATION   )) );
+    p->menu->setAnimation(                stringToBoolian( p->prc->readOption(PerConf::MENU_ANIMATION      )) );
+    p->cat_widget->setSearchBarAnimation( stringToBoolian( p->prc->readOption(PerConf::SEARCHBAR_ANIMATION )) );
+    p->cat_widget->setAnimation(          stringToBoolian( p->prc->readOption(PerConf::SEARCHING_ANIMATION )) );
+    p->tab_bar->setAnimation(             stringToBoolian( p->prc->readOption(PerConf::TABBAR_ANIMATION    )) );
+    p->toolbar_manager->setAnimation(     stringToBoolian( p->prc->readOption(PerConf::TOOLBAR_ANIMATION   )) );
 
-    p->context_button->setColorizedMenu( stringToBoolian( p->prc->readOption(perConf::COLORIZED_MENU) ) );
+    p->context_button->setColorizedMenu( stringToBoolian( p->prc->readOption(PerConf::COLORIZED_MENU) ) );
 
-    p->gradiant_back = stringToBoolian( p->prc->readOption(perConf::GRADIANT_BACK) );
+    p->gradiant_back = stringToBoolian( p->prc->readOption(PerConf::GRADIANT_BACK) );
     if( p->gradiant_back )
     {
         p->main->setFrameShape(  QFrame::NoFrame );
@@ -499,7 +499,7 @@ void SiliconUI::init_style_sheet()
 
 // Reading Theme from file ===================================//
     QString TabStyle,
-            lastOfPath = '/' + p->prc->readOption( perConf::CURRENT_THEME ) + '/' + p->defaults.Default_Theme_Name,
+            lastOfPath = '/' + p->prc->readOption( PerConf::CURRENT_THEME ) + '/' + p->defaults.Default_Theme_Name,
             fileName = p->defaults.Personal_Theme_Directory_Path + lastOfPath;
 
     if(!QFile(fileName).exists())
@@ -964,7 +964,7 @@ void SiliconUI::set_current_menupanel()
 
 void SiliconUI::viewModeChanged( QString name )
 {
-    p->prc->setOption( perConf::VIEW_MODE , name );
+    p->prc->setOption( PerConf::VIEW_MODE , name );
 }
 
 void SiliconUI::aboutQt()
@@ -1090,8 +1090,8 @@ void SiliconUI::processPageClosed( SPage * )
 void SiliconUI::addToFavorites()
 {
     QListWidgetItem *item = p->cat_widget->currentItem();
-    if( item <= 0 )
-        return ;
+    if( !item )
+        return;
 
     const SAboutData & about = p->apps_hash.value( item );
     if( p->favorites.contains(about.name()) )
@@ -1111,8 +1111,8 @@ void SiliconUI::addToFavorites()
 
 void SiliconUI::favoriteSettingUp( QListWidgetItem *item )
 {
-    if( item <= 0 )
-        return ;
+    if( !item )
+        return;
 
     const SAboutData & about = p->apps_hash.value( item );
 
@@ -1160,10 +1160,10 @@ void SiliconUI::readConf( const QString & head , const QString & child , QString
 
 void SiliconUI::saveConfs()
 {
-    p->prc->setOption( perConf::WIDTH  , QString::number(this->width())  );
-    p->prc->setOption( perConf::HEIGHT , QString::number(this->height()) );
+    p->prc->setOption( PerConf::WIDTH  , QString::number(this->width())  );
+    p->prc->setOption( PerConf::HEIGHT , QString::number(this->height()) );
 
-    p->prc->setOption( perConf::FAVORITES , p->favorites.join(",") );
+    p->prc->setOption( PerConf::FAVORITES , p->favorites.join(",") );
 
     p->prc->save();
 }
@@ -1323,7 +1323,7 @@ void SiliconUI::closeEvent( QCloseEvent *event )
     for( int i=0 ; ok && i<p->page_lists.count() ; i++ )
         ok = ok & p->page_lists.at(i)->close();
 
-    p->tab_bar->setAnimation( stringToBoolian(p->prc->readOption(perConf::TABBAR_ANIMATION)) );
+    p->tab_bar->setAnimation( stringToBoolian(p->prc->readOption(PerConf::TABBAR_ANIMATION)) );
 
     if( !p->windowed_page_list.isEmpty() && ok )
     {

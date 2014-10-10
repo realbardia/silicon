@@ -8,7 +8,7 @@
 #include <SMasterIcons>
 #include <SDesktopFunctions>
 
-ApplicationManager::ApplicationManager( const QString & appDir , perConf *conf , QWidget *parent) :
+ApplicationManager::ApplicationManager( const QString & appDir , PerConf *conf , QWidget *parent) :
     QObject(parent)
 {
     app_dir    = appDir;

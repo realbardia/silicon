@@ -24,7 +24,7 @@ class ApplicationManager : public QObject
 {
     Q_OBJECT
 public:
-    ApplicationManager( const QString & appDir , perConf *conf , QWidget *parent = 0);
+    ApplicationManager( const QString & appDir , PerConf *conf , QWidget *parent = 0);
     ~ApplicationManager();
 
     const QList<SApplication *> & loadedApplications() const;
@@ -70,7 +70,7 @@ private:
     QList<SApplication *>       locked_apps;
 
     QString  app_dir;
-    perConf *prc;
+    PerConf *prc;
 
     Ui::AppManagerUi *ui;
     QDialog          *dialog;

@@ -21,7 +21,7 @@ class SApplicationsConfigure : public QWidget
 {
     Q_OBJECT
 public:
-    SApplicationsConfigure( perConf *conf = 0 , STabBar *tabbar = 0 , SiliconDataBox *d_box = 0 , QWidget *parent = 0);
+    SApplicationsConfigure( PerConf *conf = 0 , STabBar *tabbar = 0 , SiliconDataBox *d_box = 0 , QWidget *parent = 0);
 
 signals:
     void tempChanged( const QString & tmp );
@@ -46,7 +46,7 @@ private:
     QPalette default_palette;
 
     SDefaults defaults;
-    perConf *prc;
+    PerConf *prc;
 
     STabBar *tab_bar;
     SiliconDataBox *data_box;

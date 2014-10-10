@@ -99,7 +99,7 @@ SelectFiles::SelectFiles( SApplication *parent, SAbstractDataBurner *data_burner
     : SPage( tr("Data Disc") , parent )
 {
     p = new SelectFilesPrivate;
-        p->application_id_str = tr( "Silicon (Using %1)" );
+        p->application_id_str = tr( "Silicon (using %1)" ).arg("wodim");
         p->data_burner = data_burner;
         p->image_creator = image_creator;
 
@@ -245,14 +245,14 @@ void SelectFiles::init_actions()
     p->delete_action     = new QAction( SMasterIcons::icon(ICON_SIZE,"edit-delete.png")              , tr("Delete")      , this );
     p->rename_action     = new QAction( SMasterIcons::icon(ICON_SIZE,"edit-rename.png")              , tr("Rename")      , this );
     p->properties_action = new QAction( SMasterIcons::icon(ICON_SIZE,"document-properties.png")      , tr("Properties")  , this );
-    p->previous_action   = new QAction( SMasterIcons::icon(ICON_SIZE,"go-previous.png")              , tr("Previous")    , this );
+//    p->previous_action   = new QAction( SMasterIcons::icon(ICON_SIZE,"go-previous.png")              , tr("Previous")    , this );
     p->open_dir_action   = new QAction( SMasterIcons::icon(ICON_SIZE, "go-jump-locationbar.png" )    , tr("Open Folder") , this );
     p->start_action      = new QAction( SMasterIcons::icon(ICON_SIZE,"tools-media-optical-burn.png") , tr("Go")          , this );
     p->more_action       = new QAction( SMasterIcons::icon(ICON_SIZE,"edit-rename.png")              , tr("More")        , this );
     p->data_image_action = new QAction( SMasterIcons::icon(ICON_SIZE,"application-x-cd-image.png")   , tr("Image")       , this );
 
-    p->toolbar->addAction( p->previous_action   );
-    p->toolbar->addSeparator();
+//    p->toolbar->addAction( p->previous_action   );
+//    p->toolbar->addSeparator();
     p->toolbar->addAction( p->add_file_action   );
     p->toolbar->addAction( p->add_folder_action );
     p->toolbar->addAction( p->new_folder_action );
@@ -279,7 +279,7 @@ void SelectFiles::init_actions()
 
     p->devices_combo->addAction( p->data_image_action );
 
-    p->previous_action->setShortcut( QKeySequence( Qt::Key_Backspace ) );
+//    p->previous_action->setShortcut( QKeySequence( Qt::Key_Backspace ) );
     p->delete_action->setShortcut(   QKeySequence( Qt::Key_Delete    ) );
     p->rename_action->setShortcut(   QKeySequence( Qt::Key_F2        ) );
 
@@ -288,7 +288,7 @@ void SelectFiles::init_actions()
     connect( p->new_folder_action , SIGNAL(triggered()) , SLOT(newFolder())      );
     connect( p->rename_action     , SIGNAL(triggered()) , SLOT(renameFiles())    );
     connect( p->delete_action     , SIGNAL(triggered()) , SLOT(removeCurrent())  );
-    connect( p->previous_action   , SIGNAL(triggered()) , SLOT(cdPrevious())     );
+//    connect( p->previous_action   , SIGNAL(triggered()) , SLOT(cdPrevious())     );
     connect( p->open_dir_action   , SIGNAL(triggered()) , SLOT(openFileDir())    );
     connect( p->properties_action , SIGNAL(triggered()) , SLOT(showProperties()) );
     connect( p->start_action      , SIGNAL(triggered()) , SLOT(go_prev())        );

@@ -12,7 +12,9 @@ Build-Depends:
  libqt5dbus5 (>= 5.2.0),
  libqt5test5 (>= 5.2.0),
  qt5-qmake,
- qt5-default
+ qt5-default,
+ qttools5-dev-tools,
+ libtag1-dev
 Standards-Version: 3.9.5
 Homepage: http://labs.sialan.org
 Vcs-Git: git://git@github.com:sialan-labs/silicon.git

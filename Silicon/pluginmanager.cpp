@@ -5,7 +5,7 @@
 #include <SColor>
 #include <SMasterIcons>
 
-PluginManager::PluginManager( perConf *conf , const QString & pluginsDirectory , QWidget *parent ) :
+PluginManager::PluginManager( PerConf *conf , const QString & pluginsDirectory , QWidget *parent ) :
     QObject(parent),
     plugin_dir_str( pluginsDirectory )
 {
@@ -203,14 +203,14 @@ void PluginManager::save()
             deactives << plugin->name();
     }
 
-    prc->setOption( perConf::ACTIVE_PLUGINS   , actives.join(",")   );
-    prc->setOption( perConf::DEACTIVE_PLUGINS , deactives.join(",") );
+    prc->setOption( PerConf::ACTIVE_PLUGINS   , actives.join(",")   );
+    prc->setOption( PerConf::DEACTIVE_PLUGINS , deactives.join(",") );
 }
 
 void PluginManager::loadSaved()
 {
-    QStringList actives   = prc->readOption( perConf::ACTIVE_PLUGINS   ).split(",",QString::SkipEmptyParts);
-    QStringList deactives = prc->readOption( perConf::DEACTIVE_PLUGINS ).split(",",QString::SkipEmptyParts);
+    QStringList actives   = prc->readOption( PerConf::ACTIVE_PLUGINS   ).split(",",QString::SkipEmptyParts);
+    QStringList deactives = prc->readOption( PerConf::DEACTIVE_PLUGINS ).split(",",QString::SkipEmptyParts);
 
     const QList<SPlugin*> & list = loadedPlugins.values();
 

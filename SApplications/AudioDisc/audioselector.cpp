@@ -77,7 +77,7 @@ AudioSelector::AudioSelector( SApplication *parent )
 {
     p = new AudioSelectorPrivate;
 
-    p->application_id_str = tr( "Silicon (Using %1)" );
+    p->application_id_str = tr( "Silicon (using %1)" ).arg("wodim");
 
     p->volume_line      = new QLineEdit();
     p->copyright_line   = new QLineEdit();

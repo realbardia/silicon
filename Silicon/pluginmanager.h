@@ -19,7 +19,7 @@ class PluginManager : public QObject
 {
     Q_OBJECT
 public:
-    PluginManager( perConf *conf , const QString & pluginsDirectory , QWidget *parent = 0 );
+    PluginManager( PerConf *conf , const QString & pluginsDirectory , QWidget *parent = 0 );
     ~PluginManager();
 
     void refreshUI();
@@ -53,7 +53,7 @@ private:
     QHash<QString,SPluginEngine *> plugins_hash;
 
     QString plugin_dir_str;
-    perConf *prc;
+    PerConf *prc;
 
     QString style_sheet;
 };

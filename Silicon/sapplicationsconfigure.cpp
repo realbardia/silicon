@@ -4,7 +4,7 @@
 #include <QFileDialog>
 #include <libsilicon_prev.h>
 
-SApplicationsConfigure::SApplicationsConfigure( perConf *conf , STabBar *tabbar , SiliconDataBox *d_box , QWidget *parent) :
+SApplicationsConfigure::SApplicationsConfigure( PerConf *conf , STabBar *tabbar , SiliconDataBox *d_box , QWidget *parent) :
     QWidget(parent),
     ui( new Ui::SApplicationsConfigureUI )
 {
@@ -23,7 +23,7 @@ SApplicationsConfigure::SApplicationsConfigure( perConf *conf , STabBar *tabbar 
 
 void SApplicationsConfigure::setup()
 {
-    data_box->temp = prc->readOption(perConf::TEMP_ADDRESS);
+    data_box->temp = prc->readOption(PerConf::TEMP_ADDRESS);
     ui->temp_line->setText( data_box->temp );
 }
 
@@ -31,39 +31,39 @@ void SApplicationsConfigure::setupColors()
 {
     default_palette = QApplication::palette();
 
-    colors_hash.insert( perConf::SAPPS_WINDOW         , new SColorButton( tr("Window Color") )          );
-    colors_hash.insert( perConf::SAPPS_WINDOW_TEXT    , new SColorButton( tr("Window Text Color") )     );
-    colors_hash.insert( perConf::SAPPS_BASE           , new SColorButton( tr("Base Color") )            );
-    colors_hash.insert( perConf::SAPPS_BASE_TEXT      , new SColorButton( tr("Base Text Color") )       );
-    colors_hash.insert( perConf::SAPPS_BUTTON_TEXT    , new SColorButton( tr("Button Text Color") )     );
-    colors_hash.insert( perConf::SAPPS_BUTTON         , new SColorButton( tr("Button Color") )          );
-    colors_hash.insert( perConf::SAPPS_BRIGHT_TEXT    , new SColorButton( tr("Bright Text Color") )     );
-    colors_hash.insert( perConf::SAPPS_DARK           , new SColorButton( tr("Dark Color") )            );
-    colors_hash.insert( perConf::SAPPS_HIGHLIGHT      , new SColorButton( tr("Highlight Color") )       );
-    colors_hash.insert( perConf::SAPPS_HIGHLIGHT_TEXT , new SColorButton( tr("Highlight Text Color") )  );
-    colors_hash.insert( perConf::SAPPS_LIGHT          , new SColorButton( tr("Light Color") )           );
-    colors_hash.insert( perConf::SAPPS_LINK           , new SColorButton( tr("Link Color") )            );
-    colors_hash.insert( perConf::SAPPS_LINK_VISITED   , new SColorButton( tr("Link Visited Color") )    );
-    colors_hash.insert( perConf::SAPPS_MID            , new SColorButton( tr("Mid Color") )             );
-    colors_hash.insert( perConf::SAPPS_MIDLIGHT       , new SColorButton( tr("Midlight Color") )        );
-    colors_hash.insert( perConf::SHADOW               , new SColorButton( tr("Shadow Color") )          );
+    colors_hash.insert( PerConf::SAPPS_WINDOW         , new SColorButton( tr("Window Color") )          );
+    colors_hash.insert( PerConf::SAPPS_WINDOW_TEXT    , new SColorButton( tr("Window Text Color") )     );
+    colors_hash.insert( PerConf::SAPPS_BASE           , new SColorButton( tr("Base Color") )            );
+    colors_hash.insert( PerConf::SAPPS_BASE_TEXT      , new SColorButton( tr("Base Text Color") )       );
+    colors_hash.insert( PerConf::SAPPS_BUTTON_TEXT    , new SColorButton( tr("Button Text Color") )     );
+    colors_hash.insert( PerConf::SAPPS_BUTTON         , new SColorButton( tr("Button Color") )          );
+    colors_hash.insert( PerConf::SAPPS_BRIGHT_TEXT    , new SColorButton( tr("Bright Text Color") )     );
+    colors_hash.insert( PerConf::SAPPS_DARK           , new SColorButton( tr("Dark Color") )            );
+    colors_hash.insert( PerConf::SAPPS_HIGHLIGHT      , new SColorButton( tr("Highlight Color") )       );
+    colors_hash.insert( PerConf::SAPPS_HIGHLIGHT_TEXT , new SColorButton( tr("Highlight Text Color") )  );
+    colors_hash.insert( PerConf::SAPPS_LIGHT          , new SColorButton( tr("Light Color") )           );
+    colors_hash.insert( PerConf::SAPPS_LINK           , new SColorButton( tr("Link Color") )            );
+    colors_hash.insert( PerConf::SAPPS_LINK_VISITED   , new SColorButton( tr("Link Visited Color") )    );
+    colors_hash.insert( PerConf::SAPPS_MID            , new SColorButton( tr("Mid Color") )             );
+    colors_hash.insert( PerConf::SAPPS_MIDLIGHT       , new SColorButton( tr("Midlight Color") )        );
+    colors_hash.insert( PerConf::SHADOW               , new SColorButton( tr("Shadow Color") )          );
 
-    colors_role.insert( perConf::SAPPS_WINDOW         , QPalette::Window          );
-    colors_role.insert( perConf::SAPPS_WINDOW_TEXT    , QPalette::WindowText      );
-    colors_role.insert( perConf::SAPPS_BASE           , QPalette::Base            );
-    colors_role.insert( perConf::SAPPS_BASE_TEXT      , QPalette::Text            );
-    colors_role.insert( perConf::SAPPS_BUTTON_TEXT    , QPalette::ButtonText      );
-    colors_role.insert( perConf::SAPPS_BUTTON         , QPalette::Button          );
-    colors_role.insert( perConf::SAPPS_BRIGHT_TEXT    , QPalette::BrightText      );
-    colors_role.insert( perConf::SAPPS_DARK           , QPalette::Dark            );
-    colors_role.insert( perConf::SAPPS_HIGHLIGHT      , QPalette::Highlight       );
-    colors_role.insert( perConf::SAPPS_HIGHLIGHT_TEXT , QPalette::HighlightedText );
-    colors_role.insert( perConf::SAPPS_LIGHT          , QPalette::Light           );
-    colors_role.insert( perConf::SAPPS_LINK           , QPalette::Link            );
-    colors_role.insert( perConf::SAPPS_LINK_VISITED   , QPalette::LinkVisited     );
-    colors_role.insert( perConf::SAPPS_MID            , QPalette::Mid             );
-    colors_role.insert( perConf::SAPPS_MIDLIGHT       , QPalette::Midlight        );
-    colors_role.insert( perConf::SAPPS_SHADOW         , QPalette::Shadow          );
+    colors_role.insert( PerConf::SAPPS_WINDOW         , QPalette::Window          );
+    colors_role.insert( PerConf::SAPPS_WINDOW_TEXT    , QPalette::WindowText      );
+    colors_role.insert( PerConf::SAPPS_BASE           , QPalette::Base            );
+    colors_role.insert( PerConf::SAPPS_BASE_TEXT      , QPalette::Text            );
+    colors_role.insert( PerConf::SAPPS_BUTTON_TEXT    , QPalette::ButtonText      );
+    colors_role.insert( PerConf::SAPPS_BUTTON         , QPalette::Button          );
+    colors_role.insert( PerConf::SAPPS_BRIGHT_TEXT    , QPalette::BrightText      );
+    colors_role.insert( PerConf::SAPPS_DARK           , QPalette::Dark            );
+    colors_role.insert( PerConf::SAPPS_HIGHLIGHT      , QPalette::Highlight       );
+    colors_role.insert( PerConf::SAPPS_HIGHLIGHT_TEXT , QPalette::HighlightedText );
+    colors_role.insert( PerConf::SAPPS_LIGHT          , QPalette::Light           );
+    colors_role.insert( PerConf::SAPPS_LINK           , QPalette::Link            );
+    colors_role.insert( PerConf::SAPPS_LINK_VISITED   , QPalette::LinkVisited     );
+    colors_role.insert( PerConf::SAPPS_MID            , QPalette::Mid             );
+    colors_role.insert( PerConf::SAPPS_MIDLIGHT       , QPalette::Midlight        );
+    colors_role.insert( PerConf::SAPPS_SHADOW         , QPalette::Shadow          );
 
 
     SColorButton *tmp;
@@ -99,7 +99,7 @@ void SApplicationsConfigure::setTemp()
     data_box->temp = temp;
     ui->temp_line->setText( temp );
 
-    prc->setOption( perConf::TEMP_ADDRESS , temp );
+    prc->setOption( PerConf::TEMP_ADDRESS , temp );
     prc->save();
 }
 

@@ -1,3 +1,21 @@
+silicon (2.1.0ubuntu4) trusty; urgency=medium
+
+  * Fix runfile install target.
+
+ -- Sialan Labs <contact@sialan.org>  Wed, 08 Oct 2014 02:23:31 +0330
+
+silicon (2.1.0ubuntu3) trusty; urgency=medium
+
+  * Fix missed lrelease binary package.
+
+ -- Sialan Labs <contact@sialan.org>  Wed, 08 Oct 2014 02:18:10 +0330
+
+silicon (2.1.0ubuntu2) trusty; urgency=medium
+
+  * Fix missed libtag in build deps.
+
+ -- Sialan Labs <contact@sialan.org>  Wed, 08 Oct 2014 01:49:07 +0330
+
 silicon (2.1.0ubuntu1) trusty; urgency=medium
 
   * Initial Release.

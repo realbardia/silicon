@@ -12,12 +12,12 @@
 #include "sdefaults.h"
 
 
-class perConf : public SDataBase
+class PerConf : public SDataBase
 {
 public:
-    perConf();
-    perConf(const QString & path);
-    ~perConf();
+    PerConf();
+    PerConf(const QString & path);
+    ~PerConf();
 
     void setPath(const QString & path);
     void checkFileConf(const QString & path);

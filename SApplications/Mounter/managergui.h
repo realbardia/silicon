@@ -105,8 +105,6 @@ private:
     SAbstractImageMounter *mounter;
     AutoMount *autoMount;
 
-    STabItem *tab_item;
-
     ConfigureWidget   *configureUI;
     ItemPreview *item_preview;
     SProgressListItem *process_item;

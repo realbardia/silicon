@@ -3,28 +3,28 @@
 #include <SDesktopFunctions>
 #include <QtSystemInfo/QtSystemInfo.h>
 
-perConf::perConf() : SDataBase()
+PerConf::PerConf() : SDataBase()
 {
     setPath( defaults.Personal_Configs_file );
 }
 
-perConf::perConf(const QString & path) : SDataBase()
+PerConf::PerConf(const QString & path) : SDataBase()
 {
     setPath(path);
 }
 
-perConf::~perConf()
+PerConf::~PerConf()
 {
 }
 
-void perConf::setPath(const QString & path)
+void PerConf::setPath(const QString & path)
 {
     checkFileConf(path);
     setDataBase(path);
     setup();
 }
 
-void perConf::checkFileConf(const QString & path)
+void PerConf::checkFileConf(const QString & path)
 {
     if(QFile::exists( defaults.Share_Configs_file ) && !QFile::exists(path))
     {
@@ -39,11 +39,11 @@ void perConf::checkFileConf(const QString & path)
     }
 }
 
-void perConf::setup()
+void PerConf::setup()
 {
     optionStr.clear();
     defaultsStr.clear();
-    for(int i=0;i<perConf::END;i++)
+    for(int i=0;i<PerConf::END;i++)
     {
         optionStr<<"";
         defaultsStr<<"";
@@ -86,78 +86,78 @@ void perConf::setup()
 #endif
 
 
-    optionStr.replace(perConf::GENERAL,"General_" + sysInfo.systemName().toLower() + "_" + desktop );
-    optionStr.replace(perConf::WIDTH,"width");
-    optionStr.replace(perConf::HEIGHT,"height");
-    optionStr.replace(perConf::REMOTE_ARGUMENT,"remote_argument");
-    optionStr.replace(perConf::ACTIVE_PLUGINS,"active_plugins");
-    optionStr.replace(perConf::DEACTIVE_PLUGINS,"deactive_plugins");
-    optionStr.replace(perConf::TEMP_ADDRESS,"temp_address");
+    optionStr.replace(PerConf::GENERAL,"General_" + sysInfo.systemName().toLower() + "_" + desktop );
+    optionStr.replace(PerConf::WIDTH,"width");
+    optionStr.replace(PerConf::HEIGHT,"height");
+    optionStr.replace(PerConf::REMOTE_ARGUMENT,"remote_argument");
+    optionStr.replace(PerConf::ACTIVE_PLUGINS,"active_plugins");
+    optionStr.replace(PerConf::DEACTIVE_PLUGINS,"deactive_plugins");
+    optionStr.replace(PerConf::TEMP_ADDRESS,"temp_address");
 
-    optionStr.replace(perConf::APPEARANCE,"Appearance_" + sysInfo.systemName().toLower() + "_" + desktop );
-    optionStr.replace(perConf::CURRENT_THEME,"theme");
-    optionStr.replace(perConf::MENU_ANIMATION,"menu_animation");
-    optionStr.replace(perConf::SEARCHBAR_ANIMATION,"searchbar_animation");
-    optionStr.replace(perConf::SEARCHING_ANIMATION,"searching_animation");
-    optionStr.replace(perConf::TABBAR_ANIMATION,"tabbar_animation");
-    optionStr.replace(perConf::TOOLBAR_ANIMATION,"toolbar_animation");
-    optionStr.replace(perConf::VIEW_MODE,"view_mode");
-    optionStr.replace(perConf::GRAPHICS_SYSTEM,"graphics_system");
-    optionStr.replace(perConf::WIDGET_STYLE,"widget_style");
-    optionStr.replace(perConf::GRADIANT_BACK,"gradiant_background");
-    optionStr.replace(perConf::COLORIZED_MENU,"colorized_menu");
-    optionStr.replace(perConf::LANGUAGE,"language");
+    optionStr.replace(PerConf::APPEARANCE,"Appearance_" + sysInfo.systemName().toLower() + "_" + desktop );
+    optionStr.replace(PerConf::CURRENT_THEME,"theme");
+    optionStr.replace(PerConf::MENU_ANIMATION,"menu_animation");
+    optionStr.replace(PerConf::SEARCHBAR_ANIMATION,"searchbar_animation");
+    optionStr.replace(PerConf::SEARCHING_ANIMATION,"searching_animation");
+    optionStr.replace(PerConf::TABBAR_ANIMATION,"tabbar_animation");
+    optionStr.replace(PerConf::TOOLBAR_ANIMATION,"toolbar_animation");
+    optionStr.replace(PerConf::VIEW_MODE,"view_mode");
+    optionStr.replace(PerConf::GRAPHICS_SYSTEM,"graphics_system");
+    optionStr.replace(PerConf::WIDGET_STYLE,"widget_style");
+    optionStr.replace(PerConf::GRADIANT_BACK,"gradiant_background");
+    optionStr.replace(PerConf::COLORIZED_MENU,"colorized_menu");
+    optionStr.replace(PerConf::LANGUAGE,"language");
 
-    optionStr.replace(perConf::COLORS,"Colors");
-    optionStr.replace(perConf::WINDOW,"Window");
-    optionStr.replace(perConf::WINDOW_TEXT,"Window_text");
-    optionStr.replace(perConf::BASE,"Base");
-    optionStr.replace(perConf::BASE_TEXT,"Base_text");
-    optionStr.replace(perConf::BUTTON_TEXT,"Button_text");
-    optionStr.replace(perConf::BUTTON,"Button");
-    optionStr.replace(perConf::BRIGHT_TEXT,"Bright_text");
-    optionStr.replace(perConf::DARK,"Dark");
-    optionStr.replace(perConf::HIGHLIGHT,"Highlight");
-    optionStr.replace(perConf::HIGHLIGHT_TEXT,"Highlight_text");
-    optionStr.replace(perConf::LIGHT,"Light");
-    optionStr.replace(perConf::LINK,"Link");
-    optionStr.replace(perConf::LINK_VISITED,"Link_visited");
-    optionStr.replace(perConf::MID,"Mid");
-    optionStr.replace(perConf::MIDLIGHT,"Midlight");
-    optionStr.replace(perConf::SHADOW,"Shadow");
+    optionStr.replace(PerConf::COLORS,"Colors");
+    optionStr.replace(PerConf::WINDOW,"Window");
+    optionStr.replace(PerConf::WINDOW_TEXT,"Window_text");
+    optionStr.replace(PerConf::BASE,"Base");
+    optionStr.replace(PerConf::BASE_TEXT,"Base_text");
+    optionStr.replace(PerConf::BUTTON_TEXT,"Button_text");
+    optionStr.replace(PerConf::BUTTON,"Button");
+    optionStr.replace(PerConf::BRIGHT_TEXT,"Bright_text");
+    optionStr.replace(PerConf::DARK,"Dark");
+    optionStr.replace(PerConf::HIGHLIGHT,"Highlight");
+    optionStr.replace(PerConf::HIGHLIGHT_TEXT,"Highlight_text");
+    optionStr.replace(PerConf::LIGHT,"Light");
+    optionStr.replace(PerConf::LINK,"Link");
+    optionStr.replace(PerConf::LINK_VISITED,"Link_visited");
+    optionStr.replace(PerConf::MID,"Mid");
+    optionStr.replace(PerConf::MIDLIGHT,"Midlight");
+    optionStr.replace(PerConf::SHADOW,"Shadow");
 
-    optionStr.replace(perConf::APPLICATIONS,"Applications");
-    optionStr.replace(perConf::FAVORITES,"Favorites");
-    optionStr.replace(perConf::SAPPS_WINDOW,"Window");
-    optionStr.replace(perConf::SAPPS_WINDOW_TEXT,"Window_text");
-    optionStr.replace(perConf::SAPPS_BASE,"Base");
-    optionStr.replace(perConf::SAPPS_BASE_TEXT,"Base_text");
-    optionStr.replace(perConf::SAPPS_BUTTON_TEXT,"Button_text");
-    optionStr.replace(perConf::SAPPS_BUTTON,"Button");
-    optionStr.replace(perConf::SAPPS_BRIGHT_TEXT,"Bright_text");
-    optionStr.replace(perConf::SAPPS_DARK,"Dark");
-    optionStr.replace(perConf::SAPPS_HIGHLIGHT,"Highlight");
-    optionStr.replace(perConf::SAPPS_HIGHLIGHT_TEXT,"Highlight_text");
-    optionStr.replace(perConf::SAPPS_LIGHT,"Light");
-    optionStr.replace(perConf::SAPPS_LINK,"Link");
-    optionStr.replace(perConf::SAPPS_LINK_VISITED,"Link_visited");
-    optionStr.replace(perConf::SAPPS_MID,"Mid");
-    optionStr.replace(perConf::SAPPS_MIDLIGHT,"Midlight");
-    optionStr.replace(perConf::SAPPS_SHADOW,"Shadow");
+    optionStr.replace(PerConf::APPLICATIONS,"Applications");
+    optionStr.replace(PerConf::FAVORITES,"Favorites");
+    optionStr.replace(PerConf::SAPPS_WINDOW,"Window");
+    optionStr.replace(PerConf::SAPPS_WINDOW_TEXT,"Window_text");
+    optionStr.replace(PerConf::SAPPS_BASE,"Base");
+    optionStr.replace(PerConf::SAPPS_BASE_TEXT,"Base_text");
+    optionStr.replace(PerConf::SAPPS_BUTTON_TEXT,"Button_text");
+    optionStr.replace(PerConf::SAPPS_BUTTON,"Button");
+    optionStr.replace(PerConf::SAPPS_BRIGHT_TEXT,"Bright_text");
+    optionStr.replace(PerConf::SAPPS_DARK,"Dark");
+    optionStr.replace(PerConf::SAPPS_HIGHLIGHT,"Highlight");
+    optionStr.replace(PerConf::SAPPS_HIGHLIGHT_TEXT,"Highlight_text");
+    optionStr.replace(PerConf::SAPPS_LIGHT,"Light");
+    optionStr.replace(PerConf::SAPPS_LINK,"Link");
+    optionStr.replace(PerConf::SAPPS_LINK_VISITED,"Link_visited");
+    optionStr.replace(PerConf::SAPPS_MID,"Mid");
+    optionStr.replace(PerConf::SAPPS_MIDLIGHT,"Midlight");
+    optionStr.replace(PerConf::SAPPS_SHADOW,"Shadow");
 
-    optionStr.replace(perConf::BEFORE,"Before");
+    optionStr.replace(PerConf::BEFORE,"Before");
 
 
 
-    defaultsStr.replace(perConf::GENERAL,"");
-    defaultsStr.replace(perConf::WIDTH,"1000");
-    defaultsStr.replace(perConf::HEIGHT,"573");
-    defaultsStr.replace(perConf::REMOTE_ARGUMENT,"");
-    defaultsStr.replace(perConf::ACTIVE_PLUGINS,"");
-    defaultsStr.replace(perConf::DEACTIVE_PLUGINS,"");
-    defaultsStr.replace(perConf::TEMP_ADDRESS,QDir::tempPath());
+    defaultsStr.replace(PerConf::GENERAL,"");
+    defaultsStr.replace(PerConf::WIDTH,"1000");
+    defaultsStr.replace(PerConf::HEIGHT,"573");
+    defaultsStr.replace(PerConf::REMOTE_ARGUMENT,"");
+    defaultsStr.replace(PerConf::ACTIVE_PLUGINS,"");
+    defaultsStr.replace(PerConf::DEACTIVE_PLUGINS,"");
+    defaultsStr.replace(PerConf::TEMP_ADDRESS,QDir::tempPath());
 
-    defaultsStr.replace(perConf::APPEARANCE,"");
+    defaultsStr.replace(PerConf::APPEARANCE,"");
 
 #ifdef Q_OS_LINUX
 
@@ -170,97 +170,97 @@ void perConf::setup()
     {
         switch( static_cast<int>(ubuntuTheme()) )
         {
-        case perConf::Ambiance :
-            defaultsStr.replace(perConf::CURRENT_THEME,"AmbianceDream");
+        case PerConf::Ambiance :
+            defaultsStr.replace(PerConf::CURRENT_THEME,"Ambiance-Dream");
             break;
 
-        case perConf::Radiance :
-            defaultsStr.replace(perConf::CURRENT_THEME,"RadianceDream");
+        case PerConf::Radiance :
+            defaultsStr.replace(PerConf::CURRENT_THEME,"Radiance-Dream");
             break;
 
-        case perConf::Other :
-            defaultsStr.replace(perConf::CURRENT_THEME,"Dream");
+        case PerConf::Other :
+            defaultsStr.replace(PerConf::CURRENT_THEME,"Dream");
             break;
         }
     }
     else if(
             SDesktopFunctions::desktopType() == SDesktopFunctions::Gnome
       )
-        defaultsStr.replace(perConf::CURRENT_THEME,"AdwaitaDream");
+        defaultsStr.replace(PerConf::CURRENT_THEME,"Adwaita-Dream");
     else
 #endif
-        defaultsStr.replace(perConf::CURRENT_THEME,"Dream");
+        defaultsStr.replace(PerConf::CURRENT_THEME,"Dream");
     // End if
-    defaultsStr.replace(perConf::MENU_ANIMATION,"false");
-    defaultsStr.replace(perConf::SEARCHBAR_ANIMATION,"true");
-    defaultsStr.replace(perConf::SEARCHING_ANIMATION,"true");
-    defaultsStr.replace(perConf::TABBAR_ANIMATION,"true");
-    defaultsStr.replace(perConf::TOOLBAR_ANIMATION,"true");
-    defaultsStr.replace(perConf::VIEW_MODE,"list");
-    defaultsStr.replace(perConf::GRAPHICS_SYSTEM,"raster");
-    defaultsStr.replace(perConf::WIDGET_STYLE,"");
+    defaultsStr.replace(PerConf::MENU_ANIMATION,"false");
+    defaultsStr.replace(PerConf::SEARCHBAR_ANIMATION,"true");
+    defaultsStr.replace(PerConf::SEARCHING_ANIMATION,"true");
+    defaultsStr.replace(PerConf::TABBAR_ANIMATION,"true");
+    defaultsStr.replace(PerConf::TOOLBAR_ANIMATION,"true");
+    defaultsStr.replace(PerConf::VIEW_MODE,"list");
+    defaultsStr.replace(PerConf::GRAPHICS_SYSTEM,"raster");
+    defaultsStr.replace(PerConf::WIDGET_STYLE,"");
 #ifdef Q_OS_WIN32
     defaultsStr.replace(perConf::GRADIANT_BACK,"true");
 #else
-    defaultsStr.replace(perConf::GRADIANT_BACK,"false");
+    defaultsStr.replace(PerConf::GRADIANT_BACK,"false");
 #endif
-    defaultsStr.replace(perConf::COLORIZED_MENU,"false");
-    defaultsStr.replace(perConf::LANGUAGE,"english");
+    defaultsStr.replace(PerConf::COLORIZED_MENU,"false");
+    defaultsStr.replace(PerConf::LANGUAGE,"english");
 
-    defaultsStr.replace(perConf::COLORS,"");
-    defaultsStr.replace(perConf::WINDOW,"");
-    defaultsStr.replace(perConf::WINDOW_TEXT,"");
-    defaultsStr.replace(perConf::BASE,"");
-    defaultsStr.replace(perConf::BASE_TEXT,"");
-    defaultsStr.replace(perConf::BUTTON_TEXT,"");
-    defaultsStr.replace(perConf::BUTTON,"");
-    defaultsStr.replace(perConf::BRIGHT_TEXT,"");
-    defaultsStr.replace(perConf::DARK,"");
-    defaultsStr.replace(perConf::HIGHLIGHT,"");
-    defaultsStr.replace(perConf::HIGHLIGHT_TEXT,"");
-    defaultsStr.replace(perConf::LIGHT,"");
-    defaultsStr.replace(perConf::LINK,"");
-    defaultsStr.replace(perConf::LINK_VISITED,"");
-    defaultsStr.replace(perConf::MID,"");
-    defaultsStr.replace(perConf::MIDLIGHT,"");
-    defaultsStr.replace(perConf::SHADOW,"");
+    defaultsStr.replace(PerConf::COLORS,"");
+    defaultsStr.replace(PerConf::WINDOW,"");
+    defaultsStr.replace(PerConf::WINDOW_TEXT,"");
+    defaultsStr.replace(PerConf::BASE,"");
+    defaultsStr.replace(PerConf::BASE_TEXT,"");
+    defaultsStr.replace(PerConf::BUTTON_TEXT,"");
+    defaultsStr.replace(PerConf::BUTTON,"");
+    defaultsStr.replace(PerConf::BRIGHT_TEXT,"");
+    defaultsStr.replace(PerConf::DARK,"");
+    defaultsStr.replace(PerConf::HIGHLIGHT,"");
+    defaultsStr.replace(PerConf::HIGHLIGHT_TEXT,"");
+    defaultsStr.replace(PerConf::LIGHT,"");
+    defaultsStr.replace(PerConf::LINK,"");
+    defaultsStr.replace(PerConf::LINK_VISITED,"");
+    defaultsStr.replace(PerConf::MID,"");
+    defaultsStr.replace(PerConf::MIDLIGHT,"");
+    defaultsStr.replace(PerConf::SHADOW,"");
 
-    defaultsStr.replace(perConf::APPLICATIONS,"");
-    defaultsStr.replace(perConf::FAVORITES,"DataDisc,AudioDisc,ScriptRunner,Mounter,CopyDisc,Tagarg");
-    defaultsStr.replace(perConf::SAPPS_WINDOW,"");
-    defaultsStr.replace(perConf::SAPPS_WINDOW_TEXT,"");
-    defaultsStr.replace(perConf::SAPPS_BASE,"");
-    defaultsStr.replace(perConf::SAPPS_BASE_TEXT,"");
-    defaultsStr.replace(perConf::SAPPS_BUTTON_TEXT,"");
-    defaultsStr.replace(perConf::SAPPS_BUTTON,"");
-    defaultsStr.replace(perConf::SAPPS_BRIGHT_TEXT,"");
-    defaultsStr.replace(perConf::SAPPS_DARK,"");
-    defaultsStr.replace(perConf::SAPPS_HIGHLIGHT,"");
-    defaultsStr.replace(perConf::SAPPS_HIGHLIGHT_TEXT,"");
-    defaultsStr.replace(perConf::SAPPS_LIGHT,"");
-    defaultsStr.replace(perConf::SAPPS_LINK,"");
-    defaultsStr.replace(perConf::SAPPS_LINK_VISITED,"");
-    defaultsStr.replace(perConf::SAPPS_MID,"");
-    defaultsStr.replace(perConf::SAPPS_MIDLIGHT,"");
-    defaultsStr.replace(perConf::SAPPS_SHADOW,"");
+    defaultsStr.replace(PerConf::APPLICATIONS,"");
+    defaultsStr.replace(PerConf::FAVORITES,"DataDisc,AudioDisc,ScriptRunner,Mounter,CopyDisc,Tagarg");
+    defaultsStr.replace(PerConf::SAPPS_WINDOW,"");
+    defaultsStr.replace(PerConf::SAPPS_WINDOW_TEXT,"");
+    defaultsStr.replace(PerConf::SAPPS_BASE,"");
+    defaultsStr.replace(PerConf::SAPPS_BASE_TEXT,"");
+    defaultsStr.replace(PerConf::SAPPS_BUTTON_TEXT,"");
+    defaultsStr.replace(PerConf::SAPPS_BUTTON,"");
+    defaultsStr.replace(PerConf::SAPPS_BRIGHT_TEXT,"");
+    defaultsStr.replace(PerConf::SAPPS_DARK,"");
+    defaultsStr.replace(PerConf::SAPPS_HIGHLIGHT,"");
+    defaultsStr.replace(PerConf::SAPPS_HIGHLIGHT_TEXT,"");
+    defaultsStr.replace(PerConf::SAPPS_LIGHT,"");
+    defaultsStr.replace(PerConf::SAPPS_LINK,"");
+    defaultsStr.replace(PerConf::SAPPS_LINK_VISITED,"");
+    defaultsStr.replace(PerConf::SAPPS_MID,"");
+    defaultsStr.replace(PerConf::SAPPS_MIDLIGHT,"");
+    defaultsStr.replace(PerConf::SAPPS_SHADOW,"");
 
-    defaultsStr.replace(perConf::BEFORE,"");
+    defaultsStr.replace(PerConf::BEFORE,"");
 
 
     this->setupHeads();
 }
 
-void perConf::setupHeads()
+void PerConf::setupHeads()
 {
-    this->addHead(optionStr.at(perConf::GENERAL));
-    this->addHead(optionStr.at(perConf::APPEARANCE));
-    this->addHead(optionStr.at(perConf::COLORS));
-    this->addHead(optionStr.at(perConf::APPLICATIONS));
-    this->addHead(optionStr.at(perConf::BEFORE));
+    this->addHead(optionStr.at(PerConf::GENERAL));
+    this->addHead(optionStr.at(PerConf::APPEARANCE));
+    this->addHead(optionStr.at(PerConf::COLORS));
+    this->addHead(optionStr.at(PerConf::APPLICATIONS));
+    this->addHead(optionStr.at(PerConf::BEFORE));
 }
 
 
-void perConf::setOptionDefault(const int & type)
+void PerConf::setOptionDefault(const int & type)
 {
     QString headStr=this->findHeadStr(type);
     QString childStr=optionStr.at(type);
@@ -271,7 +271,7 @@ void perConf::setOptionDefault(const int & type)
     this->set(headStr,childStr,defaultsStr.at(type));
 }
 
-void perConf::setOption(const int & type,const QString & stt)
+void PerConf::setOption(const int & type,const QString & stt)
 {
     QString headStr=this->findHeadStr(type);
     QString childStr=optionStr.at(type);
@@ -282,7 +282,7 @@ void perConf::setOption(const int & type,const QString & stt)
     this->set(headStr,childStr,stt);
 }
 
-QString perConf::readOption(const int & type)
+QString PerConf::readOption(const int & type)
 {
     QString headStr=this->findHeadStr(type);
     QString childStr=optionStr.at(type);
@@ -293,7 +293,7 @@ QString perConf::readOption(const int & type)
     return this->read(headStr,childStr);
 }
 
-QString perConf::findHeadStr(const int & type)
+QString PerConf::findHeadStr(const int & type)
 {
     if(this->BEFORE<type)
         return optionStr.at(this->BEFORE);
@@ -312,19 +312,19 @@ QString perConf::findHeadStr(const int & type)
 
 }
 
-perConf::UbuntuTheme perConf::ubuntuTheme()
+PerConf::UbuntuTheme PerConf::ubuntuTheme()
 {
     QString path = QDir::homePath() + "/.gconf/desktop/gnome/interface/%gconf.xml";
     QFile   file( path );
 
     if( !file.exists() || !file.open(QFile::ReadOnly) )
-        return perConf::Ambiance;
+        return PerConf::Ambiance;
 
     QString str = file.readAll();
     if( str.contains( "<stringvalue>Ambiance</stringvalue>" , Qt::CaseInsensitive ) )
-        return perConf::Ambiance;
+        return PerConf::Ambiance;
     if( str.contains( "<stringvalue>Radiance</stringvalue>" , Qt::CaseInsensitive ) )
-        return perConf::Radiance;
+        return PerConf::Radiance;
 
-    return perConf::Other;
+    return PerConf::Other;
 }
